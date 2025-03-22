@@ -30,11 +30,18 @@ CREATE POLICY "Allow authenticated users to update their own profile"
   FOR UPDATE 
   USING (auth.uid() = id);
 
--- Allow the authenticated user to insert their own profile
+-- Allow authenticated users to insert their own profile
 CREATE POLICY "Allow authenticated users to insert their own profile" 
   ON profiles 
   FOR INSERT 
   WITH CHECK (auth.uid() = id);
+
+-- Allow service role to insert new profiles (for signup process)
+CREATE POLICY "Allow service role to insert new profiles"
+  ON profiles
+  FOR INSERT
+  TO service_role
+  WITH CHECK (true);
 
 -- Create an index on email for faster lookups
 CREATE INDEX IF NOT EXISTS profiles_email_idx ON profiles (email); 
