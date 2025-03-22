@@ -1,0 +1,10 @@
+---
+description: I am working with Supabase without the CLI so when I ask to do a modification in the database, add a new migration in utils/supabase/migrations folder.
+globs: 
+alwaysApply: false
+---
+
+# Your rule content
+
+I am working with Supabase without the CLI so when I ask to do a modification in the database, add a new migration in utils/supabase/migrations folder.
+
