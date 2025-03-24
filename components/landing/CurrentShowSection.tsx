@@ -4,9 +4,9 @@ import Link from "next/link";
 const CurrentShowSection = () => {
   return (
     <>
-      <section id="spectacle" className="py-28 bg-white">
+      <section id="spectacle" className="py-12 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
               Notre Spectacle Actuel
             </h2>

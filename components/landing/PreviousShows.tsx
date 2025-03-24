@@ -2,6 +2,13 @@ import ShowCard from "../cards/ShowCard";
 
 const previousShows = [
   {
+    title: "Hortense a dit j'mens fous!",
+    date: "Décembre 2024",
+    image: "/images/Affiches/Hortense.png",
+    youtubeUrl: "https://youtu.be/gWR1-Gic3Dg?si=y16SFnq8Po5gHCi8",
+    description: "Une comédie française pleine de rebondissements",
+  },
+  {
     title: "Le songe d'une nuit d'été",
     date: "Avril 2024",
     image: "/images/Affiches/Songe2.png",
@@ -26,9 +33,9 @@ const previousShows = [
 
 export default function PreviousShows() {
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-50 to-gray-100">
+    <section className="py-12 bg-gradient-to-b from-gray-50 to-gray-100">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h2 className="text-4xl font-bold mb-4 text-gray-900">
             Nos anciens spectacles
           </h2>

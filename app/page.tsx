@@ -6,12 +6,12 @@ import TestimonialSection from "@/components/landing/TestimonialSection";
 
 export default function Home() {
   return (
-    <>
+    <div className="flex flex-col space-y-0">
       <HeroSection />
       <AboutSection />
       <CurrentShowSection />
       <PreviousShows />
       <TestimonialSection />
-    </>
+    </div>
   );
 }
