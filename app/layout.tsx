@@ -2,8 +2,9 @@ import { EnvVarWarning } from "@/components/env-var-warning";
 import Footer from "@/components/footer";
 import HeaderAuth from "@/components/header-auth";
 import { hasEnvVars } from "@/utils/supabase/check-env-vars";
+import { Home } from "lucide-react";
 import { ThemeProvider } from "next-themes";
-import { Geist } from "next/font/google";
+import { Geist, Playfair_Display } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 
@@ -22,6 +23,12 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+const playfair = Playfair_Display({
+  display: "swap",
+  subsets: ["latin"],
+  weight: ["700"],
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,11 +45,20 @@ export default function RootLayout({
         >
           <main className="min-h-screen flex flex-col items-center">
             <div className="flex-1 w-full flex flex-col items-center">
-              <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
+              <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16 bg-red-600 text-white">
                 <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
                   <div className="flex gap-5 items-center font-semibold">
-                    <Link href={"/"}>Double Jeu</Link>
-                    <Link href={"/promos"}>Promotions</Link>
+                    <Link
+                      href={"/"}
+                      className="flex items-center gap-2 hover:text-gray-200"
+                    >
+                      <Home className="h-5 w-5" />
+                      <span
+                        className={`${playfair.className} text-xl tracking-wide`}
+                      >
+                        DOUBLE JEU
+                      </span>
+                    </Link>
                   </div>
                   {!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
                 </div>
