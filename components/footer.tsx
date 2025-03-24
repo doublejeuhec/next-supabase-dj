@@ -1,6 +1,7 @@
 "use client";
 
 import { Facebook, Instagram, Linkedin, Mail } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -60,6 +61,13 @@ export default function Footer() {
         <div className="flex justify-center pt-6 border-t border-gray-200 mt-6">
           <div className="text-gray-600 text-sm">
             © {currentYear} Troupe de Théâtre DOUBLE JEU
+            <span className="mx-2">•</span>
+            <Link
+              href="/sign-up"
+              className="text-gray-400 hover:text-red-600 text-xs"
+            >
+              Connexion
+            </Link>
           </div>
         </div>
       </div>
