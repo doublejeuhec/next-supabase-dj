@@ -23,19 +23,40 @@ export default function ShowCard({
         rel="noopener noreferrer"
         className="block w-full max-w-xs transform transition-transform hover:scale-105"
       >
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden h-full border border-gray-100">
-          <div className="relative w-full aspect-[2/3]">
-            <Image src={image} alt={title} fill className="object-cover" />
-            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-              <div className="w-16 h-16 rounded-full bg-white bg-opacity-80 flex items-center justify-center transform hover:scale-110 transition-transform">
-                <div className="w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-12 border-l-red-600 ml-1"></div>
+        <div className="relative h-full rounded-xl overflow-hidden group">
+          {/* A4 aspect ratio is approximately 1:1.414 */}
+          <div className="relative w-full aspect-[1/1.414]">
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className="object-cover"
+              priority
+            />
+
+            {/* Information overlay that appears on hover */}
+            <div className="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4">
+              <div>
+                <div className="text-sm text-red-500 font-medium mb-2">
+                  {date}
+                </div>
+                <h3 className="text-lg font-bold mb-2 text-white">{title}</h3>
+                <p className="text-gray-200 text-sm">{description}</p>
+              </div>
+
+              {/* Play button at the bottom */}
+              <div className="self-center mt-4">
+                <div className="rounded-full bg-red-600 p-3 flex items-center justify-center">
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="w-6 h-6 text-white fill-current"
+                    style={{ marginLeft: "2px" }}
+                  >
+                    <polygon points="5,3 19,12 5,21" />
+                  </svg>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="p-6">
-            <div className="text-sm text-red-600 font-medium mb-2">{date}</div>
-            <h3 className="text-xl font-bold mb-2">{title}</h3>
-            <p className="text-gray-600">{description}</p>
           </div>
         </div>
       </a>
