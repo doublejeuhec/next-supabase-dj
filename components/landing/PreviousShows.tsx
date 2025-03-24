@@ -69,10 +69,11 @@ const PreviousShows = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 text-foreground">
-            Nos Spectacles Passés
+            Nos anciens spectacles
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Découvrez nos précédentes productions qui ont marqué l'Histoire. Rien que ça.
+            Découvrez nos précédentes productions qui ont marqué l'Histoire.
+            Rien que ça.
           </p>
           <div className="mt-6 w-24 h-1 bg-brand-red mx-auto rounded-full"></div>
         </div>

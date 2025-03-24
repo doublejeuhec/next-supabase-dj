@@ -89,7 +89,7 @@ export const signUpAction = async (formData: FormData) => {
 
     return encodedRedirect(
       "success",
-      "/sign-up",
+      "/protected",
       "Account created successfully!"
     );
   }

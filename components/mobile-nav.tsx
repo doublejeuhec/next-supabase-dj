@@ -127,10 +127,7 @@ export function MobileNav({ isLoggedIn }: { isLoggedIn: boolean }) {
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
-              <Link href="/profile">Mon profil</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <Link href="/account">Mon compte</Link>
+              <Link href="/protected/profile">Mon profil</Link>
             </DropdownMenuItem>
             <DropdownMenuItem onClick={handleSignOut}>
               Se déconnecter
