@@ -1,45 +1,40 @@
 const TestimonialSection = () => {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-gray-900">
-            Ce que dit notre public
+          <h2 className="text-4xl font-bold mb-4 text-foreground">
+            Ce qu'ils disent de nous
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Des spectateurs conquis par nos précédentes productions
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Quelques témoignages d'anciens, de spectateurs et de professionnels
+            qui ont collaboré avec Double Jeu.
           </p>
-          <div className="mt-6 w-24 h-1 bg-red-600 mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {[
-            {
-              name: "Sophie Martin",
-              quote:
-                "Une mise en scène audacieuse et des comédiens talentueux. J'ai été transportée du début à la fin !",
-            },
-            {
-              name: "Thomas Leroy",
-              quote:
-                "DOUBLE JEU réussit toujours à me surprendre. Leur interprétation des classiques est à la fois respectueuse et innovante.",
-            },
-            {
-              name: "Émilie Dubois",
-              quote:
-                "Un moment magique en famille. Les enfants ont adoré et nous aussi ! Nous reviendrons sans hésiter.",
-            },
-          ].map((testimonial, index) => (
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-gray-50 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100"
+              className="bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-border"
             >
-              <div className="text-red-600 text-4xl mb-4">"</div>
-              <p className="italic text-gray-600 mb-6 text-lg">
-                {testimonial.quote}
-              </p>
-              <p className="font-semibold text-gray-900">
-                — {testimonial.name}
+              <div className="flex items-center mb-4">
+                <div className="mr-4">
+                  <div className="w-12 h-12 rounded-full bg-brand-red flex items-center justify-center text-white font-bold">
+                    {testimonial.name.charAt(0)}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="font-bold text-foreground">
+                    {testimonial.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {testimonial.title}
+                  </p>
+                </div>
+              </div>
+              <p className="text-muted-foreground italic">
+                "{testimonial.quote}"
               </p>
             </div>
           ))}
@@ -48,5 +43,26 @@ const TestimonialSection = () => {
     </section>
   );
 };
+
+const testimonials = [
+  {
+    name: "Sophie Martin",
+    title: "Ancienne de la troupe (Promo 2018)",
+    quote:
+      "Faire partie de Double Jeu a été l'une des expériences les plus enrichissantes de mon parcours à HEC. J'y ai développé des compétences qui me servent aujourd'hui dans ma vie professionnelle.",
+  },
+  {
+    name: "Thomas Dubois",
+    title: "Spectateur fidèle",
+    quote:
+      "Je suis impressionné chaque année par la qualité des spectacles de Double Jeu. Le niveau est vraiment professionnel et l'énergie des étudiants sur scène est communicative !",
+  },
+  {
+    name: "Jean Lefèvre",
+    title: "Metteur en scène",
+    quote:
+      "Travailler avec les étudiants de Double Jeu est toujours un plaisir. Leur motivation, leur sérieux et leur créativité permettent de monter des spectacles ambitieux.",
+  },
+];
 
 export default TestimonialSection;

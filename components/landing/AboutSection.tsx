@@ -1,19 +1,16 @@
 const AboutSection = () => {
   return (
-    <section
-      id="about"
-      className="py-12 bg-gradient-to-b from-gray-50 to-gray-100"
-    >
+    <section id="about" className="py-12 bg-muted/50">
       <div className="container mx-auto px-4">
         <div className="text-center"></div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col">
-            <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+          <div className="bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-border flex flex-col">
+            <h3 className="text-2xl font-semibold mb-4 text-foreground">
               Notre Histoire
             </h3>
-            <div className="w-12 h-1 bg-red-600 mb-6 rounded-full"></div>
-            <p className="text-gray-600 flex-grow">
+            <div className="w-12 h-1 bg-brand-red mb-6 rounded-full"></div>
+            <p className="text-muted-foreground flex-grow">
               Depuis 25 ans, Double Jeu fait vibrer la scène d'HEC Paris en
               réunissant des passionnés de théâtre autour de spectacles toujours
               plus ambitieux. Ce qui n'était au départ qu'une troupe étudiante
@@ -25,12 +22,12 @@ const AboutSection = () => {
             </p>
           </div>
 
-          <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col">
-            <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+          <div className="bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-border flex flex-col">
+            <h3 className="text-2xl font-semibold mb-4 text-foreground">
               Notre Vision
             </h3>
-            <div className="w-12 h-1 bg-red-600 mb-6 rounded-full"></div>
-            <p className="text-gray-600 flex-grow">
+            <div className="w-12 h-1 bg-brand-red mb-6 rounded-full"></div>
+            <p className="text-muted-foreground flex-grow">
               Nous croyons que le théâtre est une aventure collective où se
               mêlent rigueur, créativité et audace. Notre ambition ? Offrir aux
               étudiants et au public des pièces captivantes, mises en scène par
@@ -42,12 +39,12 @@ const AboutSection = () => {
             </p>
           </div>
 
-          <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col">
-            <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+          <div className="bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-border flex flex-col">
+            <h3 className="text-2xl font-semibold mb-4 text-foreground">
               Notre Équipe
             </h3>
-            <div className="w-12 h-1 bg-red-600 mb-6 rounded-full"></div>
-            <p className="text-gray-600 flex-grow">
+            <div className="w-12 h-1 bg-brand-red mb-6 rounded-full"></div>
+            <p className="text-muted-foreground flex-grow">
               Double Jeu, c'est une vingtaine d'étudiants réunis par une passion
               commune et répartis sur deux promotions. Chaque année, huit
               nouveaux comédiens rejoignent la troupe après des auditions

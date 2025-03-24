@@ -14,15 +14,15 @@ export default async function AuthButton() {
 
   return user ? (
     <div className="flex items-center gap-4">
-      <Link href="/promos" className="text-white hover:text-gray-200">
+      <Link href="/promos" className="text-primary-foreground hover:opacity-80">
         Découvrir la troupe
       </Link>
-      Hey, {user.email}!
+      <span className="text-primary-foreground">Hey, {user.email}!</span>
       <form action={signOutAction}>
         <Button
           type="submit"
           variant={"outline"}
-          className="bg-white hover:bg-gray-100 text-red-600"
+          className="bg-background text-foreground hover:bg-muted"
         >
           Sign out
         </Button>

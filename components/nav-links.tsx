@@ -14,7 +14,7 @@ export function NavLinks() {
     <div className="flex gap-4 items-center">
       <a
         href="#about"
-        className="text-white hover:text-gray-200 cursor-pointer"
+        className="text-primary-foreground hover:opacity-80 cursor-pointer"
         onClick={(e) => {
           e.preventDefault();
           scrollToSection("about");
@@ -24,7 +24,7 @@ export function NavLinks() {
       </a>
       <a
         href="#previous-shows"
-        className="text-white hover:text-gray-200 cursor-pointer"
+        className="text-primary-foreground hover:opacity-80 cursor-pointer"
         onClick={(e) => {
           e.preventDefault();
           scrollToSection("previous-shows");
@@ -32,7 +32,7 @@ export function NavLinks() {
       >
         Nos spectacles
       </a>
-      <Link href="/promos" className="text-white hover:text-gray-200">
+      <Link href="/promos" className="text-primary-foreground hover:opacity-80">
         Découvrir la troupe
       </Link>
     </div>
