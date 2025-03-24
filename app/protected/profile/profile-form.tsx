@@ -13,8 +13,10 @@ import {
 } from "@/components/ui/card";
 import { User } from "@/types/database";
 import { createClient } from "@/utils/supabase/client";
+import { Loader2, Upload } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 interface ProfileFormProps {
   profile: User;
@@ -23,6 +25,7 @@ interface ProfileFormProps {
 export function ProfileForm({ profile }: ProfileFormProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const [message, setMessage] = useState<{
     type: "success" | "error";
     text: string;
@@ -39,11 +42,114 @@ export function ProfileForm({ profile }: ProfileFormProps) {
     avatar_url: profile.avatar_url || "",
   });
 
+  // Store the current avatar path for cleanup on new upload
+  const [currentAvatarPath, setCurrentAvatarPath] = useState<string | null>(
+    () => {
+      if (!profile.avatar_url) return null;
+      // Extract the path from the current avatar URL if it exists
+      try {
+        const url = new URL(profile.avatar_url);
+        const pathParts = url.pathname.split("/");
+        const bucketIndex = pathParts.findIndex(
+          (part) => part === "user-content"
+        );
+        if (bucketIndex !== -1 && pathParts.length > bucketIndex + 1) {
+          return pathParts.slice(bucketIndex + 1).join("/");
+        }
+        return null;
+      } catch (e) {
+        return null;
+      }
+    }
+  );
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormState({
       ...formState,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Check file size (limit to 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      setMessage({
+        type: "error",
+        text: "L'image est trop volumineuse. Taille maximum: 5MB",
+      });
+      return;
+    }
+
+    // Check file type
+    if (!file.type.startsWith("image/")) {
+      setMessage({
+        type: "error",
+        text: "Seuls les fichiers images sont acceptés",
+      });
+      return;
+    }
+
+    setIsUploading(true);
+    setMessage(null);
+
+    try {
+      const supabase = createClient();
+
+      // Generate a unique file name with timestamp to avoid conflicts
+      const timestamp = new Date().getTime();
+      const fileExt = file.name.split(".").pop();
+      const fileName = `${timestamp}_${uuidv4()}.${fileExt}`;
+      const filePath = `avatars/${profile.id}/${fileName}`;
+
+      // Upload the file
+      const { error: uploadError } = await supabase.storage
+        .from("user-content")
+        .upload(filePath, file, {
+          upsert: true,
+          contentType: file.type,
+        });
+
+      if (uploadError) {
+        throw new Error(uploadError.message);
+      }
+
+      // Get the public URL
+      const {
+        data: { publicUrl },
+      } = supabase.storage.from("user-content").getPublicUrl(filePath);
+
+      // Delete the old avatar if it exists and is in our storage
+      if (currentAvatarPath) {
+        // We don't await this or handle errors critically since it's cleanup
+        supabase.storage
+          .from("user-content")
+          .remove([currentAvatarPath])
+          .then(({ error }) => {
+            if (error) {
+              console.warn("Couldn't remove old avatar:", error.message);
+            }
+          });
+      }
+
+      // Update the current avatar path for future cleanup
+      setCurrentAvatarPath(filePath);
+
+      // Update the form state with the new URL
+      setFormState({
+        ...formState,
+        avatar_url: publicUrl,
+      });
+    } catch (error) {
+      setMessage({
+        type: "error",
+        text: `Erreur lors de l'upload: ${error instanceof Error ? error.message : "Une erreur est survenue"}`,
+      });
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -107,13 +213,49 @@ export function ProfileForm({ profile }: ProfileFormProps) {
             />
             <AvatarFallback className="text-2xl">{initials}</AvatarFallback>
           </Avatar>
-          <FloatingLabelInput
-            label="URL de l'image"
-            name="avatar_url"
-            value={formState.avatar_url}
-            onChange={handleChange}
-            placeholder="https://example.com/avatar.jpg"
-          />
+
+          <div className="flex flex-col w-full gap-2">
+            <div className="flex gap-2 items-center">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() =>
+                  document.getElementById("avatar-upload")?.click()
+                }
+                disabled={isUploading}
+                className="flex gap-2"
+              >
+                {isUploading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <span>Envoi en cours...</span>
+                  </>
+                ) : (
+                  <>
+                    <Upload className="h-4 w-4" />
+                    <span>Choisir une image</span>
+                  </>
+                )}
+              </Button>
+              <input
+                id="avatar-upload"
+                type="file"
+                accept="image/*"
+                onChange={handleFileUpload}
+                className="hidden"
+              />
+              {formState.avatar_url && (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setFormState({ ...formState, avatar_url: "" })}
+                >
+                  Supprimer
+                </Button>
+              )}
+            </div>
+          </div>
         </CardContent>
       </Card>
 
