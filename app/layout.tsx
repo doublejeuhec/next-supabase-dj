@@ -15,6 +15,7 @@ export const metadata = {
   metadataBase: new URL(defaultUrl),
   title: "Double Jeu",
   description: "La troupe de théâtre d'HEC Paris",
+  viewport: "width=device-width, initial-scale=1",
 };
 
 const geistSans = Geist({
@@ -45,7 +46,7 @@ export default function RootLayout({
           <main className="min-h-screen flex flex-col">
             <div className="flex-1 w-full flex flex-col">
               <nav className="w-full border-b border-border h-16 dark:bg-white bg-brand-red">
-                <div className="w-full  mx-auto flex justify-between items-center p-3 text-sm ">
+                <div className="w-full mx-auto flex justify-between items-center p-3 text-sm">
                   <div className="flex gap-5 items-end font-semibold">
                     <Link
                       href={"/"}

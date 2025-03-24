@@ -1,9 +1,10 @@
 import { createClient } from "@/utils/supabase/server";
+import Link from "next/link";
+import { MobileNav } from "./mobile-nav";
 import { NavLinks } from "./nav-links";
 import { ThemeSwitcher } from "./theme-switcher";
 import { Separator } from "./ui/separator";
 import UserAvatarDropdown from "./user-avatar-dropdown";
-import Link from "next/link";
 
 export default async function AuthButton() {
   const supabase = await createClient();
@@ -15,12 +16,19 @@ export default async function AuthButton() {
   if (!user) {
     return (
       <div className="flex items-center gap-4">
-        <NavLinks />
+        <div className="hidden md:flex">
+          <NavLinks />
+        </div>
         <Separator
           orientation="vertical"
-          className="bg-white/50 dark:bg-black/50 h-6"
+          className="hidden md:block bg-white/50 dark:bg-black/50 h-6"
         />
-        <ThemeSwitcher />
+        <div className="hidden md:block">
+          <ThemeSwitcher />
+        </div>
+
+        {/* Mobile Navigation */}
+        <MobileNav isLoggedIn={false} />
       </div>
     );
   }
@@ -34,13 +42,27 @@ export default async function AuthButton() {
 
   return (
     <div className="flex items-center gap-10 text-primary-foreground dark:text-foreground">
-      <Link href="/promos" className="text-primary-foreground dark:text-black text-base font-semibold">Voir les cocos</Link>
-      <UserAvatarDropdown user={profileData} />
+      <div className="hidden md:block">
+        <Link
+          href="/promos"
+          className="text-primary-foreground dark:text-black text-base font-semibold"
+        >
+          Voir les cocos
+        </Link>
+      </div>
+      <div className="hidden md:block">
+        <UserAvatarDropdown user={profileData} />
+      </div>
       <Separator
         orientation="vertical"
-        className="bg-white/50 dark:bg-black/50 h-6"
+        className="hidden md:block bg-white/50 dark:bg-black/50 h-6"
       />
-      <ThemeSwitcher />
+      <div className="hidden md:block">
+        <ThemeSwitcher />
+      </div>
+
+      {/* Mobile Navigation */}
+      <MobileNav isLoggedIn={true} />
     </div>
   );
 }

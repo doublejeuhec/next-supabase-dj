@@ -20,21 +20,6 @@ const TestimonialSection = () => {
     }>
   >([]);
 
-  // Generate decorative elements after mount to avoid hydration errors
-  useEffect(() => {
-    const newDecorations = Array.from({ length: 15 }, (_, i) => ({
-      id: i,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      delay: `${Math.random() * 5}s`,
-      rotate: `${Math.random() * 360}deg`,
-      scale: `${0.5 + Math.random()}`,
-      isStar: Math.random() > 0.5,
-      size: Math.random() * 20 + 10,
-    }));
-    setDecorations(newDecorations);
-  }, []);
-
   useEffect(() => {
     const topRow = topRowRef.current;
     const bottomRow = bottomRowRef.current;
