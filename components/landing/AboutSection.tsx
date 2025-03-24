@@ -11,14 +11,10 @@ const AboutSection = () => {
             </h3>
             <div className="w-12 h-1 bg-brand-red mb-6 rounded-full"></div>
             <p className="text-muted-foreground flex-grow">
-              Depuis 25 ans, Double Jeu fait vibrer la scène d'HEC Paris en
-              réunissant des passionnés de théâtre autour de spectacles toujours
-              plus ambitieux. Ce qui n'était au départ qu'une troupe étudiante
-              s'est transformé en un véritable collectif artistique, attirant
-              chaque année des talents désireux de faire vivre des pièces de
-              qualité. Aujourd'hui, nous avons la fierté de proposer deux
-              spectacles par an, dont l'un dans un théâtre parisien prestigieux,
-              le Palais des Glaces.
+              Depuis 25 ans, Double Jeu anime la scène d'HEC Paris. Notre
+              troupe, née d'une simple passion étudiante, est devenue un
+              collectif artistique reconnu. Chaque année, nous présentons deux
+              spectacles, dont l'un au prestigieux Palais des Glaces à Paris.
             </p>
           </div>
 
@@ -28,14 +24,11 @@ const AboutSection = () => {
             </h3>
             <div className="w-12 h-1 bg-brand-red mb-6 rounded-full"></div>
             <p className="text-muted-foreground flex-grow">
-              Nous croyons que le théâtre est une aventure collective où se
-              mêlent rigueur, créativité et audace. Notre ambition ? Offrir aux
-              étudiants et au public des pièces captivantes, mises en scène par
-              un professionnel reconnu, dans des conditions
-              quasi-professionnelles. Chaque production est l'occasion de
-              repousser nos limites et d'explorer de nouvelles formes
-              d'expression artistique, tout en préservant l'esprit d'équipe et
-              de transmission qui fait la force de notre troupe.
+              Nous créons un théâtre où fusionnent rigueur, créativité et
+              audace. Notre ambition : proposer des pièces captivantes dans des
+              conditions professionnelles, avec un metteur en scène reconnu.
+              Chaque production repousse nos limites artistiques tout en
+              préservant notre esprit d'équipe unique.
             </p>
           </div>
 
@@ -45,14 +38,11 @@ const AboutSection = () => {
             </h3>
             <div className="w-12 h-1 bg-brand-red mb-6 rounded-full"></div>
             <p className="text-muted-foreground flex-grow">
-              Double Jeu, c'est une vingtaine d'étudiants réunis par une passion
-              commune et répartis sur deux promotions. Chaque année, huit
-              nouveaux comédiens rejoignent la troupe après des auditions
-              exigeantes, intégrant un groupe soudé où l'expérience des anciens
-              se transmet aux nouveaux. Mais notre équipe ne se limite pas à la
-              scène : décorateurs, costumiers, responsables de la communication…
-              Chacun a un rôle clé à jouer pour donner vie aux spectacles qui
-              marquent la vie du campus.
+              Une vingtaine d'étudiants sur deux promotions composent Double
+              Jeu. Chaque année, huit nouveaux comédiens rejoignent l'aventure
+              après des auditions rigoureuses. Notre équipe englobe aussi
+              décorateurs, costumiers et communicants, tous essentiels pour
+              donner vie à nos spectacles emblématiques.
             </p>
           </div>
         </div>
