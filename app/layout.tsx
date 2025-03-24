@@ -2,9 +2,8 @@ import { EnvVarWarning } from "@/components/env-var-warning";
 import Footer from "@/components/footer";
 import HeaderAuth from "@/components/header-auth";
 import { hasEnvVars } from "@/utils/supabase/check-env-vars";
-import { Home } from "lucide-react";
 import { ThemeProvider } from "next-themes";
-import { Geist, Playfair_Display } from "next/font/google";
+import { Geist, Montserrat } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 
@@ -23,7 +22,7 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const playfair = Playfair_Display({
+const montserrat = Montserrat({
   display: "swap",
   subsets: ["latin"],
   weight: ["700"],
@@ -52,9 +51,8 @@ export default function RootLayout({
                       href={"/"}
                       className="flex items-center gap-2 hover:text-gray-200"
                     >
-                      <Home className="h-5 w-5" />
                       <span
-                        className={`${playfair.className} text-xl tracking-wide`}
+                        className={`${montserrat.className} text-3xl tracking-wide`}
                       >
                         DOUBLE JEU
                       </span>
