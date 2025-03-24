@@ -4,7 +4,7 @@ const promo2025: Member[] = [
   {
     title: "Alexandre Pouré",
     src: "/images/CF/Promo2025/optimized/Alexandre.jpg",
-    poste: "Encore un mauvais 1A",
+    poste: "",
     roles: {
       H: "Adrien",
     },
@@ -13,7 +13,7 @@ const promo2025: Member[] = [
   {
     title: "Alexis Salmon",
     src: "/images/CF/Promo2025/optimized/Alexis.jpg",
-    poste: "Encore un mauvais 1A",
+    poste: "",
     roles: {
       H: "Leboucq",
     },
@@ -22,7 +22,7 @@ const promo2025: Member[] = [
   {
     title: "Camille Beaudoin",
     src: "/images/CF/Promo2025/optimized/Camille.jpg",
-    poste: "Encore un mauvais 1A",
+    poste: "",
     roles: {
       H: "Mme Dingue",
     },
@@ -31,7 +31,7 @@ const promo2025: Member[] = [
   {
     title: "Florence Baverez",
     src: "/images/CF/Promo2025/optimized/Florence.jpg",
-    poste: "Encore un mauvais 1A",
+    poste: "",
     roles: {
       H: "Hortense",
     },
@@ -40,7 +40,7 @@ const promo2025: Member[] = [
   {
     title: "Gabriel Béatrix",
     src: "/images/CF/Promo2025/optimized/GabrielB.jpg",
-    poste: "Membre éminent parti trop vite",
+    poste: "",
     roles: {
       VVD: "Le patient",
     },
@@ -49,7 +49,7 @@ const promo2025: Member[] = [
   {
     title: "Jade Lange",
     src: "/images/CF/Promo2025/optimized/Jade.jpg",
-    poste: "Encore un mauvais 1A",
+    poste: "",
     roles: {
       H: "L'Anglaise",
     },
@@ -58,7 +58,7 @@ const promo2025: Member[] = [
   {
     title: "Jules Bedrossian",
     src: "/images/CF/Promo2025/optimized/Jules.jpg",
-    poste: "Encore un mauvais 1A",
+    poste: "",
     roles: {
       H: "M. Jean",
     },
@@ -67,7 +67,7 @@ const promo2025: Member[] = [
   {
     title: "Lothaire Guillerot-Malick",
     src: "/images/CF/Promo2025/optimized/Lothaire.jpg",
-    poste: "Membre éminent parti trop vite",
+    poste: "",
     roles: {
       H: "Vildamour",
     },
@@ -76,7 +76,7 @@ const promo2025: Member[] = [
   {
     title: "Madeleine Dorchies",
     src: "/images/CF/Promo2025/optimized/Madeleine.jpg",
-    poste: "Encore un mauvais 1A",
+    poste: "",
     roles: {
       H: "Marcelle Follbraguet",
     },
@@ -85,7 +85,7 @@ const promo2025: Member[] = [
   {
     title: "Nicolas Dargelos-Descoubez",
     src: "/images/CF/Promo2025/optimized/Nicolas.jpg",
-    poste: "Membre éminent parti trop vite",
+    poste: "",
     roles: {
       H: "Le docteur Follbraguet",
     },
@@ -94,7 +94,7 @@ const promo2025: Member[] = [
   {
     title: "Louise Rivier",
     src: "/images/CF/Promo2025/optimized/Louise.jpg",
-    poste: "Encore un mauvais 1A",
+    poste: "",
     roles: {
       H: "La Cuisinière",
     },

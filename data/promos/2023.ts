@@ -4,25 +4,25 @@ const promo2023: Member[] = [
   {
     title: "Anne-Quiterie Leclerc",
     src: "/images/CF/Promo2023/optimized/aq.jpg",
-    poste: "Membre éminente",
+    poste: "Trésorière",
     roles: {
-      JV: "Arlequin",
+      JV: "Rosaura",
     },
     commentaireOR: "",
   },
   {
     title: "Henri de Durfort",
     src: "/images/CF/Promo2023/optimized/henri.jpg",
-    poste: "Trésorière",
+    poste: "",
     roles: {
-      JV: "Brighella",
+      SNE: "",
     },
     commentaireOR: "",
   },
   {
     title: "Nicolas Catez",
     src: "/images/CF/Promo2023/optimized/nico.jpg",
-    poste: "Vice-président",
+    poste: "",
     roles: {
       JV: "",
     },
@@ -31,7 +31,7 @@ const promo2023: Member[] = [
   {
     title: "Marc-Antoine Estaben",
     src: "/images/CF/Promo2023/optimized/marco.jpg",
-    poste: "",
+    poste: "Vice-président",
     roles: {
       JV: "",
     },
@@ -40,7 +40,7 @@ const promo2023: Member[] = [
   {
     title: "Sofia",
     src: "/images/CF/Promo2023/optimized/sofia.jpg",
-    poste: "Membre éminent parti trop vite",
+    poste: "",
     roles: {
       SNE: "",
     },
@@ -49,7 +49,7 @@ const promo2023: Member[] = [
   {
     title: "Victoire Denizot",
     src: "/images/CF/Promo2023/optimized/victoire.jpg",
-    poste: "Membre Membre éminente partie trop vite",
+    poste: "",
     roles: {
       FIL: "",
     },
@@ -59,7 +59,7 @@ const promo2023: Member[] = [
   {
     title: "Hadrien Marquant",
     src: "/images/CF/Promo2023/optimized/hadrien.jpg",
-    poste: "VP",
+    poste: "Vice-président",
     roles: {
       FIL: "",
     },
@@ -68,7 +68,7 @@ const promo2023: Member[] = [
   {
     title: "Marius",
     src: "/images/CF/Promo2023/optimized/marius.jpg",
-    poste: "",
+    poste: "Président",
     roles: {
       SNE: "Obéron",
     },

@@ -49,7 +49,7 @@ const promo2024: Member[] = [
   {
     title: "Matthis Cadeau",
     src: "/images/CF/Promo2024/optimized/Matthis.jpg",
-    poste: "Membre éminent parti trop vite",
+    poste: "",
     roles: {
       JV: "Le marquis Lelio",
       SNE: "Thésée et Mort-de-faim (qui joue lui même la Lune)",
@@ -59,7 +59,7 @@ const promo2024: Member[] = [
   {
     title: "Mia Berthier",
     src: "/images/CF/Promo2024/optimized/Mia.jpg",
-    poste: "Membre Membre éminente partie trop vite",
+    poste: "",
     roles: {
       JV: "Pantalone",
       SNE: "Titania",
@@ -98,7 +98,7 @@ const promo2024: Member[] = [
   {
     title: "Selene Brunel",
     src: "/images/CF/Promo2024/optimized/Selene.jpg",
-    poste: "Membre éminente partie trop vite",
+    poste: "",
     roles: {
       JV: "Le Prévôt",
       SNE: "Hermia",
@@ -108,7 +108,7 @@ const promo2024: Member[] = [
   {
     title: "Zineb Senhaji",
     src: "/images/CF/Promo2024/optimized/Zineb.jpg",
-    poste: "Membre éminente partie trop vite",
+    poste: "",
     roles: {
       JV: "Tiburce",
       SNE: "Hippolyte, La fée, Fleur des Pois, Etriqué (qui joue elle-même le Lion)",

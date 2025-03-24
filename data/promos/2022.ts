@@ -50,7 +50,7 @@ const promo2022: Member[] = [
   {
     title: "Malo",
     src: "/images/CF/Promo2022/optimized/malo.jpg",
-    poste: "Membre Membre éminente partie trop vite",
+    poste: "",
     roles: {
       FIL: "Pantalone",
     },
