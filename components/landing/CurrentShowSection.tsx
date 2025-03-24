@@ -1,5 +1,4 @@
 import { ArrowUpRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 const CurrentShowSection = () => {
@@ -44,12 +43,14 @@ const CurrentShowSection = () => {
 
             <div className="w-full md:w-1/2">
               <div className="relative aspect-[3/4] w-full max-w-md mx-auto rounded-xl shadow-lg overflow-hidden">
-                <Image
-                  src="/images/Affiches/visite.png"
-                  alt="La visite de la vieille dame"
-                  fill
-                  priority
-                  className="object-cover"
+                <video
+                  src="/video/annonce-VVD.mp4"
+                  className="object-cover w-full h-full"
+                  controls
+                  autoPlay
+                  muted
+                  playsInline
+                  loop
                 />
               </div>
             </div>

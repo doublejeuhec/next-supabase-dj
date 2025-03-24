@@ -281,13 +281,13 @@ const testimonials = [
       "Une pièce qui démontre tout le potentiel créatif des étudiants HEC.",
   },
   {
-    name: "Marie Lambert",
+    name: "Nicolas Grimaldi",
     show: "A vu Hortense a dit j'mens fous",
     quote:
       "Un moment magique qui fait oublier qu'on est dans un théâtre étudiant.",
   },
   {
-    name: "Thomas Renard",
+    name: "Ines Bouniard",
     show: "A vu Un fil à la patte",
     quote: "Double Jeu continue de surprendre et d'émerveiller chaque année.",
   },
