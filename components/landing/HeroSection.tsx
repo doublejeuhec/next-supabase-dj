@@ -67,7 +67,7 @@ export default function HeroSection() {
 
             <div className="pt-6">
               <Link
-                href="/tickets"
+                href="https://www.hpsu.org/collect/description/547586-i-la-visite-de-la-vieille-dame"
                 className="inline-flex items-center px-8 py-4 text-white bg-red-600 rounded-lg hover:bg-red-700 transition-all transform hover:scale-105 text-lg font-medium shadow-lg"
               >
                 Acheter des billets
