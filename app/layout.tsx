@@ -3,7 +3,7 @@ import Footer from "@/components/footer";
 import HeaderAuth from "@/components/header-auth";
 import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import { ThemeProvider } from "next-themes";
-import { Geist, Montserrat } from "next/font/google";
+import { Geist, Oswald } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 
@@ -22,7 +22,7 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const montserrat = Montserrat({
+const oswald = Oswald({
   display: "swap",
   subsets: ["latin"],
   weight: ["700"],
@@ -45,14 +45,14 @@ export default function RootLayout({
           <main className="min-h-screen flex flex-col">
             <div className="flex-1 w-full flex flex-col">
               <nav className="w-full border-b border-border h-16 dark:bg-white bg-brand-red">
-                <div className="w-full max-w-7xl mx-auto flex justify-between items-center p-3 px-5 text-sm">
-                  <div className="flex gap-5 items-center font-semibold">
+                <div className="w-full  mx-auto flex justify-between items-center p-3 text-sm ">
+                  <div className="flex gap-5 items-end font-semibold">
                     <Link
                       href={"/"}
-                      className="flex items-center gap-2 hover:opacity-80"
+                      className="flex items-end gap-4 hover:opacity-80"
                     >
                       <span
-                        className={`${montserrat.className} text-3xl tracking-wide dark:text-black text-primary-foreground`}
+                        className={`${oswald.className} text-4xl tracking-wide dark:text-black text-primary-foreground`}
                       >
                         DOUBLE JEU
                       </span>
