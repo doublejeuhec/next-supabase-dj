@@ -26,12 +26,14 @@ export default function UserAvatarDropdown({ user }: UserAvatarDropdownProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="outline-none">
-        <Avatar>
+        <Avatar className="dark:border dark:border-brand-red">
           <AvatarImage
             src={user.avatar_url || ""}
             alt={`${user.first_name} ${user.last_name}`}
           />
-          <AvatarFallback>{initials}</AvatarFallback>
+          <AvatarFallback className="bg-muted-foreground text-primary-foreground dark:bg-brand-red dark:text-primary-foreground">
+            {initials}
+          </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

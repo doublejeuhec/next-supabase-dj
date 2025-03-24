@@ -50,22 +50,25 @@ export function NavLinks() {
   };
 
   return (
-    <div className="flex gap-4 items-center">
+    <div className="flex gap-10 items-center">
       <a
         href="#about"
-        className="text-primary-foreground hover:opacity-80 cursor-pointer"
+        className="text-primary-foreground dark:text-black hover:underline cursor-pointer text-base font-semibold"
         onClick={(e) => navigateToSection(e, "about")}
       >
         Qui sommes-nous
       </a>
       <a
         href="#previous-shows"
-        className="text-primary-foreground hover:opacity-80 cursor-pointer"
+        className="text-primary-foreground dark:text-black hover:underline cursor-pointer text-base font-semibold"
         onClick={(e) => navigateToSection(e, "previous-shows")}
       >
         Nos spectacles
       </a>
-      <Link href="/promos" className="text-primary-foreground hover:opacity-80">
+      <Link
+        href="/promos"
+        className="text-primary-foreground dark:text-black hover:underline text-base font-semibold"
+      >
         Découvrir la troupe
       </Link>
     </div>
