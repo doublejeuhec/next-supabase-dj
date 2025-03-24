@@ -42,10 +42,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="min-h-screen flex flex-col items-center">
-            <div className="flex-1 w-full flex flex-col items-center">
-              <nav className="w-full flex justify-center border-b border-border h-16 bg-brand-red">
-                <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
+          <main className="min-h-screen flex flex-col">
+            <div className="flex-1 w-full flex flex-col">
+              <nav className="w-full border-b border-border h-16 bg-brand-red">
+                <div className="w-full max-w-7xl mx-auto flex justify-between items-center p-3 px-5 text-sm">
                   <div className="flex gap-5 items-center font-semibold">
                     <Link
                       href={"/"}
@@ -61,7 +61,7 @@ export default function RootLayout({
                   {!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
                 </div>
               </nav>
-              <div className="flex flex-col">{children}</div>
+              <div className="w-full">{children}</div>
 
               <Footer />
             </div>
