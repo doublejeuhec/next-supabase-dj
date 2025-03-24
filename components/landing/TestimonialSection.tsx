@@ -77,7 +77,7 @@ const TestimonialSection = () => {
       const elapsed = timestamp - topLastTimestamp;
       topLastTimestamp = timestamp;
 
-      // Top row moves right to left (negative transform increases)
+      // Top row moves right to left (standard direction)
       topPosition += topSpeed * elapsed;
       if (topPosition >= topRow.scrollWidth / 2) {
         topPosition = 0;
@@ -95,14 +95,13 @@ const TestimonialSection = () => {
       const elapsed = timestamp - bottomLastTimestamp;
       bottomLastTimestamp = timestamp;
 
-      // Bottom row moves left to right (positive transform increases)
+      // Bottom row moves in reverse direction (left to right)
       bottomPosition += bottomSpeed * elapsed;
-      if (bottomPosition >= bottomRow.scrollWidth / 2) {
-        bottomPosition = 0;
-      }
 
-      // Using a positive value for translateX makes it move right
-      bottomRow.style.transform = `translateX(${bottomPosition}px)`;
+      // Use modulo to create continuous loop
+      const effectivePosition = bottomPosition % (bottomRow.scrollWidth / 2);
+
+      bottomRow.style.transform = `translateX(${effectivePosition}px)`;
 
       requestAnimationFrame(animateBottomRow);
     };
@@ -119,7 +118,7 @@ const TestimonialSection = () => {
 
   // Split testimonials into two rows
   const firstHalf = testimonials.slice(0, testimonials.length / 2);
-  const secondHalf = testimonials.slice(testimonials.length / 2);
+  const secondHalf = testimonials.slice(testimonials.length / 2).reverse(); // Reverse for better visual effect
 
   return (
     <section className="py-24 bg-background relative overflow-hidden">
@@ -285,13 +284,13 @@ const testimonials = [
       "Une pièce qui démontre tout le potentiel créatif des étudiants HEC.",
   },
   {
-    name: "Marie Lambert",
+    name: "Nicolas Grimaldi",
     show: "A vu Hortense a dit j'mens fous",
     quote:
       "Un moment magique qui fait oublier qu'on est dans un théâtre étudiant.",
   },
   {
-    name: "Thomas Renard",
+    name: "Ines Bouniard",
     show: "A vu Un fil à la patte",
     quote: "Double Jeu continue de surprendre et d'émerveiller chaque année.",
   },
