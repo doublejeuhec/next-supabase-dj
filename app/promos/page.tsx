@@ -12,7 +12,7 @@ import { promos } from "@/data/promos";
 import { useState } from "react";
 
 export default function PromosPage() {
-  const [selectedPromo, setSelectedPromo] = useState("2024");
+  const [selectedPromo, setSelectedPromo] = useState("2025");
 
   const filteredMembers = promos[selectedPromo];
 
@@ -27,7 +27,7 @@ export default function PromosPage() {
           </div>
 
           <div className="mb-8 flex justify-center">
-            <div className="bg-card rounded-xl inline-flex shadow-sm p-1">
+            <div className="bg-card rounded-xl inline-flex p-1">
               <Select
                 value={selectedPromo}
                 onValueChange={(value) => setSelectedPromo(value)}
@@ -46,7 +46,7 @@ export default function PromosPage() {
             </div>
           </div>
 
-          <div className="bg-card p-6 rounded-xl shadow-sm border border-border">
+          <div className="bg-card p-6 rounded-xl border border-border">
             {filteredMembers.length === 0 ? (
               <p className="text-center py-8 text-muted-foreground">
                 Aucun membre trouvé pour cette promotion
