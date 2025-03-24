@@ -2,7 +2,7 @@ import { Member } from "@/types/member";
 
 const promo2023: Member[] = [
   {
-    title: "Adèle Quesnoit",
+    title: "Anne-Quiterie Leclerc",
     src: "/images/CF/Promo2023/optimized/aq.jpg",
     poste: "Membre éminente",
     roles: {
@@ -11,7 +11,7 @@ const promo2023: Member[] = [
     commentaireOR: "",
   },
   {
-    title: "Ambre Caillaux",
+    title: "Henri de Durfort",
     src: "/images/CF/Promo2023/optimized/henri.jpg",
     poste: "Trésorière",
     roles: {
@@ -20,69 +20,57 @@ const promo2023: Member[] = [
     commentaireOR: "",
   },
   {
-    title: "Arthur Milgrom",
-    src: "/images/CF/Promo2023/optimized/ignace.jpg",
-    poste: "Responsable représentation",
-    roles: {
-      JV: "Tonino",
-    },
-    commentaireOR: "",
-  },
-  {
-    title: "Gabriel Fauchon",
+    title: "Nicolas Catez",
     src: "/images/CF/Promo2023/optimized/nico.jpg",
     poste: "Vice-président",
     roles: {
-      JV: "Pancrace",
-    },
-    commentaireOR: "qu'il faut faire attention aux feeeeeeeemmes",
-  },
-  {
-    title: "Garance Pauwels",
-    src: "/images/CF/Promo2023/optimized/marco.jpg",
-    poste: "Secrétaire générale",
-    roles: {
-      JV: "Colombine",
+      JV: "",
     },
     commentaireOR: "",
   },
   {
-    title: "Matthis Cadeau",
+    title: "Marc-Antoine Estaben",
+    src: "/images/CF/Promo2023/optimized/marco.jpg",
+    poste: "",
+    roles: {
+      JV: "",
+    },
+    commentaireOR: "",
+  },
+  {
+    title: "Sofia",
     src: "/images/CF/Promo2023/optimized/sofia.jpg",
     poste: "Membre éminent parti trop vite",
     roles: {
-      JV: "Le marquis Lelio",
-      SNE: "Thésée et Mort-de-faim (qui joue lui même la Lune)",
+      SNE: "",
     },
-    commentaireOR: "qu'il fait très bien la lune qui dit ah bah d'accord",
+    commentaireOR: "",
   },
   {
-    title: "Mia Berthier",
+    title: "Victoire Denizot",
     src: "/images/CF/Promo2023/optimized/victoire.jpg",
     poste: "Membre Membre éminente partie trop vite",
     roles: {
-      JV: "Pantalone",
-      SNE: "Titania",
+      FIL: "",
     },
     commentaireOR:
       "que son dos va bien malgré des heures passées à dormir sur un escalier",
   },
   {
-    title: "Nell Sibue",
+    title: "Hadrien Marquant",
     src: "/images/CF/Promo2023/optimized/hadrien.jpg",
-    poste: "Responsable cohésion",
+    poste: "VP",
     roles: {
-      JV: "Beatrice",
+      FIL: "",
     },
     commentaireOR: "",
   },
   {
-    title: "Raphaël Géron",
+    title: "Marius",
     src: "/images/CF/Promo2023/optimized/marius.jpg",
-    poste: "Vice-président",
+    poste: "",
     roles: {
-      JV: "Florindo",
-      SNE: "Lysandre",
+      SNE: "Obéron",
     },
     commentaireOR: "",
   },

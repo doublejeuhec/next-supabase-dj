@@ -6,13 +6,11 @@ const QUALITY = 80;
 const MAX_WIDTH = 800;
 
 // Directories to process
-const IMAGE_DIRS = [
-  path.join(process.cwd(), "public/images/CF/Promo2025"),
-];
+const IMAGE_DIRS = [path.join(process.cwd(), "public/images/CF/Promo2023")];
 
 // Output directories
 const OUTPUT_DIRS = [
-  path.join(process.cwd(), "public/images/CF/Promo2025/optimized"),
+  path.join(process.cwd(), "public/images/CF/Promo2023/optimized"),
 ];
 
 // Create output directories if they don't exist
