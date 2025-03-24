@@ -34,7 +34,7 @@ export default async function AuthButton() {
 
   return (
     <div className="flex items-center gap-10 text-primary-foreground dark:text-foreground">
-      <Link href="/promos" className="text-primary-foreground dark:text-foreground text-base font-semibold">Voir les cocos</Link>
+      <Link href="/promos" className="text-primary-foreground dark:text-black text-base font-semibold">Voir les cocos</Link>
       <UserAvatarDropdown user={profileData} />
       <Separator
         orientation="vertical"
