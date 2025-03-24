@@ -21,7 +21,7 @@ export default function MemberCard({ member, index }: MemberCardProps) {
           src={member.src}
           alt={member.title}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-500 group-hover:scale-125"
           sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
           quality={80}
           loading={index < 4 ? "eager" : "lazy"}
