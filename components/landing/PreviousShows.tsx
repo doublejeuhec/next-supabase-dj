@@ -29,6 +29,20 @@ const previousShows = [
     youtubeUrl: "https://youtu.be/6esbvoB5DTY?si=Y96LSJZW8Ld1cV-u",
     description: "Le chef-d'œuvre comique de Georges Feydeau",
   },
+  {
+    title: "Le médecin malgré lui",
+    date: "Décembre 2023",
+    image: "/images/Affiches/medecin.png",
+    youtubeUrl: "https://youtu.be/yKT8_F3X9rg?si=98mlg6XZaFAaCqFA",
+    description: "Une comédie française pleine de rebondissements",
+  },
+  {
+    title: "Les Éstivants",
+    date: "Avril 2022",
+    image: "/images/Affiches/estivants.png",
+    youtubeUrl: "https://youtu.be/_vgrDjzOjUk?si=UEs40OhCsiLKOazo",
+    description: "Une comédie française pleine de rebondissements",
+  },
 ];
 
 export default function PreviousShows() {
