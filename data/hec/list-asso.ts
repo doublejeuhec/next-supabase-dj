@@ -14,7 +14,6 @@ export const associations = [
   "Décentralis’HEC",
   "Des Piliers Pour Avancer",
   "Diversidrive",
-  "Double Jeu",
   "Duo Conseil X-HEC",
   "Entre&prend",
   "Épicerie Le Local",
