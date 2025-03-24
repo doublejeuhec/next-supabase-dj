@@ -52,7 +52,7 @@ export default function PromosPage() {
                 Aucun membre trouvé pour cette promotion
               </p>
             ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {filteredMembers.map((member, index) => (
                   <MemberCard key={index} member={member} index={index} />
                 ))}
