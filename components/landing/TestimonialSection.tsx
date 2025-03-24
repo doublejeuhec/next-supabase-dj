@@ -95,13 +95,20 @@ const TestimonialSection = () => {
       const elapsed = timestamp - bottomLastTimestamp;
       bottomLastTimestamp = timestamp;
 
-      // Bottom row moves in reverse direction (left to right)
+      // Bottom row moves left to right (reverse direction)
       bottomPosition += bottomSpeed * elapsed;
 
-      // Use modulo to create continuous loop
-      const effectivePosition = bottomPosition % (bottomRow.scrollWidth / 2);
+      // Set initial position to negative scrollWidth/2 so items start off-screen to the left
+      if (bottomPosition === 0) {
+        bottomPosition = -bottomRow.scrollWidth / 2;
+      }
 
-      bottomRow.style.transform = `translateX(${effectivePosition}px)`;
+      // Reset position when we've scrolled completely through
+      if (bottomPosition >= 0) {
+        bottomPosition = -bottomRow.scrollWidth / 2;
+      }
+
+      bottomRow.style.transform = `translateX(${bottomPosition}px)`;
 
       requestAnimationFrame(animateBottomRow);
     };
@@ -172,11 +179,6 @@ const TestimonialSection = () => {
                 </div>
 
                 <div className="flex items-center mb-3">
-                  <div className="mr-3">
-                    <div className="w-10 h-10 rounded-full bg-brand-red flex items-center justify-center text-white font-bold">
-                      {testimonial.name.charAt(0)}
-                    </div>
-                  </div>
                   <div>
                     <h3 className="font-bold text-foreground text-sm">
                       {testimonial.name}
@@ -215,11 +217,6 @@ const TestimonialSection = () => {
                 </div>
 
                 <div className="flex items-center mb-3">
-                  <div className="mr-3">
-                    <div className="w-10 h-10 rounded-full bg-brand-red flex items-center justify-center text-white font-bold">
-                      {testimonial.name.charAt(0)}
-                    </div>
-                  </div>
                   <div>
                     <h3 className="font-bold text-foreground text-sm">
                       {testimonial.name}
@@ -284,13 +281,13 @@ const testimonials = [
       "Une pièce qui démontre tout le potentiel créatif des étudiants HEC.",
   },
   {
-    name: "Nicolas Grimaldi",
+    name: "Marie Lambert",
     show: "A vu Hortense a dit j'mens fous",
     quote:
       "Un moment magique qui fait oublier qu'on est dans un théâtre étudiant.",
   },
   {
-    name: "Ines Bouniard",
+    name: "Thomas Renard",
     show: "A vu Un fil à la patte",
     quote: "Double Jeu continue de surprendre et d'émerveiller chaque année.",
   },

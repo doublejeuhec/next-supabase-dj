@@ -29,10 +29,8 @@ const CurrentShowSection = () => {
                 amant qui l'a abandonnée.
               </p>
               <p className="text-muted-foreground leading-relaxed text-lg">
-                Notre mise en scène contemporaine met en lumière la critique
-                sociale et les dilemmes moraux de cette œuvre majeure du théâtre
-                germanophone, offrant une expérience théâtrale intense et
-                mémorable.
+                Notre mise en scène vous surprendra et vous plongera dans une
+                expérience théâtrale unique.
               </p>
 
               <Link
