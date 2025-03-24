@@ -7,15 +7,13 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-muted border-t border-border">
+    <footer className="border-t border-border bg-background text-foreground">
       <div className="w-full px-4 py-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             {/* Contact Info */}
             <div>
-              <h3 className="font-semibold text-foreground mb-3">
-                Troupe DOUBLE JEU
-              </h3>
+              <h3 className="font-semibold mb-3">Troupe DOUBLE JEU</h3>
               <div className="flex items-center gap-2 text-muted-foreground mb-2">
                 <Mail className="h-4 w-4" />
                 <a
