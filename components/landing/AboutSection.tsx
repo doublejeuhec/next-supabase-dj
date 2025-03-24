@@ -21,7 +21,7 @@ const AboutSection = () => {
 
           <div className="bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-border flex flex-col">
             <h3 className="text-2xl font-semibold mb-4 text-foreground">
-              Notre metteur en scène Maxime Taffanel
+              Maxime !!! le metteur en scène
             </h3>
             <div className="w-12 h-1 bg-brand-red mb-6 rounded-full"></div>
             <p className="text-muted-foreground flex-grow">
@@ -44,7 +44,7 @@ const AboutSection = () => {
             <p className="text-muted-foreground flex-grow">
               Une vingtaine d'étudiants sur deux promotions composent Double
               Jeu. Chaque année, huit nouveaux comédiens rejoignent l'aventure
-              après des auditions rigoureuses. Nous sommes travaillions ensemble
+              après des auditions rigoureuses. Nous travaillons ensemble dans la
               dans la conception et la réalisation de toute la scénographie.
             </p>
           </div>
