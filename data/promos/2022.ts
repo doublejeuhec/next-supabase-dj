@@ -2,8 +2,8 @@ import { Member } from "@/types/member";
 
 const promo2022: Member[] = [
   {
-    title: "Brieux",
-    src: "/images/CF/Promo2022/optimized/brieux.jpg",
+    title: "Brieuc Bourguignat",
+    src: "/images/CF/Promo2022/optimized/brieuc.jpg",
     poste: "Membre éminente",
     roles: {
       JV: "Arlequin",
@@ -11,7 +11,7 @@ const promo2022: Member[] = [
     commentaireOR: "",
   },
   {
-    title: "Quentin",
+    title: "Quentin Massoni",
     src: "/images/CF/Promo2022/optimized/quentin.jpg",
     poste: "Trésorière",
     roles: {
@@ -20,7 +20,7 @@ const promo2022: Member[] = [
     commentaireOR: "",
   },
   {
-    title: "Ignace",
+    title: "Ignace Boutheon",
     src: "/images/CF/Promo2022/optimized/ignace.jpg",
     poste: "",
     roles: {
@@ -29,7 +29,7 @@ const promo2022: Member[] = [
     commentaireOR: "",
   },
   {
-    title: "Violette",
+    title: "Violette Brun",
     src: "/images/CF/Promo2022/optimized/violette.jpg",
     poste: "",
     roles: {
@@ -38,7 +38,7 @@ const promo2022: Member[] = [
     commentaireOR: "",
   },
   {
-    title: "Tiphaine",
+    title: "Tiphaine Roger",
     src: "/images/CF/Promo2022/optimized/tiphainer.jpg",
     poste: "",
     roles: {
@@ -48,7 +48,7 @@ const promo2022: Member[] = [
   },
 
   {
-    title: "Malo",
+    title: "Malo le Gouvello",
     src: "/images/CF/Promo2022/optimized/malo.jpg",
     poste: "",
     roles: {
@@ -58,7 +58,7 @@ const promo2022: Member[] = [
       "que son dos va bien malgré des heures passées à dormir sur un escalier",
   },
   {
-    title: "Charles",
+    title: "Charles Duféÿ",
     src: "/images/CF/Promo2022/optimized/charles.jpg",
     poste: "Président",
     roles: {

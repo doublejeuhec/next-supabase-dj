@@ -38,11 +38,20 @@ const promo2023: Member[] = [
     commentaireOR: "",
   },
   {
-    title: "Sofia",
+    title: "Sofia El Mountassir",
     src: "/images/CF/Promo2023/optimized/sofia.jpg",
     poste: "",
     roles: {
       SNE: "",
+    },
+    commentaireOR: "",
+  },
+  {
+    title: "Louise Nègre",
+    src: "/images/CF/Promo2023/optimized/louise.jpg",
+    poste: "",
+    roles: {
+      FIL: "",
     },
     commentaireOR: "",
   },
@@ -66,11 +75,29 @@ const promo2023: Member[] = [
     commentaireOR: "",
   },
   {
-    title: "Marius",
+    title: "Marius Dalloz",
     src: "/images/CF/Promo2023/optimized/marius.jpg",
     poste: "Président",
     roles: {
       SNE: "Obéron",
+    },
+    commentaireOR: "",
+  },
+  {
+    title: "Ariane de Saint Victor",
+    src: "/images/CF/Promo2023/optimized/ariane.jpg",
+    poste: "",
+    roles: {
+      FIL: "",
+    },
+    commentaireOR: "",
+  },
+  {
+    title: "Tiphaine Bechade",
+    src: "/images/CF/Promo2023/optimized/tiphaineB.jpg",
+    poste: "",
+    roles: {
+      FIL: "",
     },
     commentaireOR: "",
   },
