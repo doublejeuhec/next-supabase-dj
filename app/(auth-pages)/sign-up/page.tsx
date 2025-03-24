@@ -1,6 +1,5 @@
 import { SignUpForm } from "@/components/auth/sign-up-form";
 import { FormMessage, Message } from "@/components/form-message";
-import { SmtpMessage } from "../smtp-message";
 
 export default async function Signup(props: {
   searchParams: Promise<Message>;
@@ -15,9 +14,8 @@ export default async function Signup(props: {
   }
 
   return (
-    <>
+    <div className="w-full flex-1 flex flex-col items-center justify-center h-screen sm:max-w-md mx-auto p-4">
       <SignUpForm message={searchParams} />
-      <SmtpMessage />
-    </>
+    </div>
   );
 }
