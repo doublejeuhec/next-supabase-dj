@@ -7,7 +7,7 @@ export interface ShowCardProps {
   year: string;
   description: string;
   coverImage: string;
-  youtubeUrl: string;
+  youtubeUrl?: string;
   writer?: string;
   directors?: string[];
 }
@@ -18,12 +18,12 @@ const ShowCard = ({
   description,
   coverImage,
   youtubeUrl,
-  writer = "Auteur inconnu",
+  writer,
   directors = [],
 }: ShowCardProps) => {
   return (
     <div
-      className="group relative overflow-hidden shadow-md transition-all hover:shadow-xl"
+      className="group relative overflow-hidden shadow-md transition-all hover:shadow-xl rounded-lg"
       style={{ aspectRatio: "1/1.414" }}
     >
       {/* A4 format (width:height ratio of 1:1.414) */}
@@ -56,7 +56,7 @@ const ShowCard = ({
             rel="noopener noreferrer"
             className="self-center mt-auto"
           >
-            <div className="rounded-full bg-brand-red p-3 flex items-center justify-center w-12 h-12 hover:bg-red-700 transition-colors">
+            <div className="rounded-full bg-brand-red p-3 flex items-center justify-center w-12 h-12 hover:bg-opacity-80 transition-colors">
               <Play
                 className="w-6 h-6 text-white fill-current"
                 strokeWidth={0.5}

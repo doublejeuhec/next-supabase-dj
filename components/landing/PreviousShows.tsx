@@ -4,8 +4,8 @@ const shows = [
   {
     index: 0,
     title: "Hortense a dit j'mens fous!",
-    date: "Décembre 2024",
-    image: "/images/Affiches/Hortense.png",
+    year: "Décembre 2024",
+    coverImage: "/images/Affiches/Hortense.png",
     youtubeUrl: "https://youtu.be/gWR1-Gic3Dg?si=y16SFnq8Po5gHCi8",
     description: "Une comédie française pleine de rebondissements",
     writer: "Georges Feydeau",
@@ -14,8 +14,8 @@ const shows = [
   {
     index: 1,
     title: "Le songe d'une nuit d'été",
-    date: "Avril 2024",
-    image: "/images/Affiches/Songe2.png",
+    year: "Avril 2024",
+    coverImage: "/images/Affiches/Songe2.png",
     youtubeUrl: "https://youtu.be/fh1phNN9u8s?si=ZwpxNSE2f2MnarA7",
     description: "Une adaptation onirique de l'œuvre de Shakespeare",
     writer: "William Shakespeare",
@@ -24,8 +24,8 @@ const shows = [
   {
     index: 2,
     title: "Les jumeaux vénitiens",
-    date: "Décembre 2023",
-    image: "/images/Affiches/Jumeaux.jpg",
+    year: "Décembre 2023",
+    coverImage: "/images/Affiches/Jumeaux.jpg",
     youtubeUrl: "https://youtu.be/4t701ayLoUU?si=ehL11ZzN8EQmRayw",
     description: "Une comédie italienne pleine de rebondissements",
     writer: "Carlo Goldoni",
@@ -34,8 +34,8 @@ const shows = [
   {
     index: 3,
     title: "Un fil à la patte",
-    date: "Avril 2023",
-    image: "/images/Affiches/fil.jpg",
+    year: "Avril 2023",
+    coverImage: "/images/Affiches/fil.jpg",
     youtubeUrl: "https://youtu.be/6esbvoB5DTY?si=Y96LSJZW8Ld1cV-u",
     description: "Le chef-d'œuvre comique de Georges Feydeau",
     writer: "Georges Feydeau",
@@ -44,8 +44,8 @@ const shows = [
   {
     index: 4,
     title: "Le médecin malgré lui",
-    date: "Décembre 2023",
-    image: "/images/Affiches/medecin.png",
+    year: "Décembre 2023",
+    coverImage: "/images/Affiches/medecin.png",
     youtubeUrl: "https://youtu.be/yKT8_F3X9rg?si=98mlg6XZaFAaCqFA",
     description: "Une comédie française pleine de rebondissements",
     writer: "Molière",
@@ -54,8 +54,8 @@ const shows = [
   {
     index: 5,
     title: "Les Éstivants",
-    date: "Avril 2022",
-    image: "/images/Affiches/estivants.png",
+    year: "Avril 2022",
+    coverImage: "/images/Affiches/estivants.png",
     youtubeUrl: "https://youtu.be/_vgrDjzOjUk?si=UEs40OhCsiLKOazo",
     description: "Une comédie française pleine de rebondissements",
     writer: "Maxime Gorki",
@@ -83,9 +83,9 @@ const PreviousShows = () => {
             <ShowCard
               key={show.index}
               title={show.title}
-              year={show.date}
+              year={show.year}
               description={show.description}
-              coverImage={show.image}
+              coverImage={show.coverImage}
               youtubeUrl={show.youtubeUrl}
               writer={show.writer}
               directors={show.directors}

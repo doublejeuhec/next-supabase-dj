@@ -15,7 +15,7 @@ interface MemberCardProps {
 
 export default function MemberCard({ member, index }: MemberCardProps) {
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border-gray-200 group">
+    <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border-border group">
       <div className="relative h-56 w-full overflow-hidden">
         <Image
           src={member.src}
@@ -30,19 +30,21 @@ export default function MemberCard({ member, index }: MemberCardProps) {
         />
       </div>
       <CardHeader className="pb-1 pt-3">
-        <CardTitle className="text-base font-bold">{member.title}</CardTitle>
+        <CardTitle className="text-base font-bold text-foreground">
+          {member.title}
+        </CardTitle>
       </CardHeader>
       <CardContent className="pt-0">
-        <p className="font-medium text-red-600 text-sm mb-2 border-b border-red-100 pb-2">
+        <p className="font-medium text-brand-red text-sm mb-2 border-b border-brand-red/20 pb-2">
           {member.poste}
         </p>
 
         <div className="space-y-1 mb-2">
-          <p className="text-xs font-semibold text-gray-700">Rôles :</p>
-          <ul className="text-xs text-gray-600 space-y-1">
+          <p className="text-xs font-semibold text-foreground/80">Rôles :</p>
+          <ul className="text-xs text-muted-foreground space-y-1">
             {Object.entries(member.roles).map(([abbr, role], idx) => (
-              <li key={idx} className="pl-2 border-l-2 border-red-200">
-                <span className="font-medium text-red-800">
+              <li key={idx} className="pl-2 border-l-2 border-brand-red/20">
+                <span className="font-medium text-brand-red">
                   {roleAbbreviations[abbr] || abbr}
                 </span>{" "}
                 : {typeof role === "string" ? role : String(role)}
@@ -52,8 +54,8 @@ export default function MemberCard({ member, index }: MemberCardProps) {
         </div>
 
         {member.commentaireOR && (
-          <div className="text-xs italic text-gray-500 mt-3 pt-2 border-t border-gray-100">
-            <span className="font-medium text-red-700">On raconte </span>
+          <div className="text-xs italic text-muted-foreground mt-3 pt-2 border-t border-border">
+            <span className="font-medium text-brand-red">On raconte </span>
             {member.commentaireOR}
           </div>
         )}

@@ -10,19 +10,19 @@ export default function PromosPage() {
   const filteredMembers = promos[selectedPromo];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-background/50">
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold">
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground">
               Les Promotions de DOUBLE JEU
             </h1>
           </div>
 
           <div className="mb-8 flex justify-center">
-            <div className="bg-white p-4 rounded-xl inline-flex">
+            <div className="bg-card p-4 rounded-xl inline-flex shadow-sm border border-border">
               <select
-                className="px-4 py-2 border rounded-md text-lg font-medium"
+                className="px-4 py-2 border border-input rounded-md text-lg font-medium text-foreground bg-background"
                 value={selectedPromo}
                 onChange={(e) => setSelectedPromo(e.target.value)}
               >
@@ -35,9 +35,9 @@ export default function PromosPage() {
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-sm">
+          <div className="bg-card p-6 rounded-xl shadow-sm border border-border">
             {filteredMembers.length === 0 ? (
-              <p className="text-center py-8 text-gray-500">
+              <p className="text-center py-8 text-muted-foreground">
                 Aucun membre trouvé pour cette promotion
               </p>
             ) : (
