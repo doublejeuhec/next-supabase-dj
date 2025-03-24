@@ -9,7 +9,7 @@ const shows = [
     youtubeUrl: "https://youtu.be/gWR1-Gic3Dg?si=y16SFnq8Po5gHCi8",
     description: "Une comédie française pleine de rebondissements",
     writer: "Georges Feydeau",
-    directors: ["Jean Dupont"],
+    directors: ["Maxime Taffanel"],
   },
   {
     index: 1,
@@ -19,7 +19,7 @@ const shows = [
     youtubeUrl: "https://youtu.be/fh1phNN9u8s?si=ZwpxNSE2f2MnarA7",
     description: "Une adaptation onirique de l'œuvre de Shakespeare",
     writer: "William Shakespeare",
-    directors: ["Marie Laurent"],
+    directors: ["Maxime Taffanel"],
   },
   {
     index: 2,
@@ -29,7 +29,7 @@ const shows = [
     youtubeUrl: "https://youtu.be/4t701ayLoUU?si=ehL11ZzN8EQmRayw",
     description: "Une comédie italienne pleine de rebondissements",
     writer: "Carlo Goldoni",
-    directors: ["Sophie Martin"],
+    directors: ["Maxime Taffanel"],
   },
   {
     index: 3,
@@ -39,7 +39,7 @@ const shows = [
     youtubeUrl: "https://youtu.be/6esbvoB5DTY?si=Y96LSJZW8Ld1cV-u",
     description: "Le chef-d'œuvre comique de Georges Feydeau",
     writer: "Georges Feydeau",
-    directors: ["Pierre Durand"],
+    directors: ["Maxime Taffanel"],
   },
   {
     index: 4,
@@ -49,7 +49,7 @@ const shows = [
     youtubeUrl: "https://youtu.be/yKT8_F3X9rg?si=98mlg6XZaFAaCqFA",
     description: "Une comédie française pleine de rebondissements",
     writer: "Molière",
-    directors: ["Claire Petit"],
+    directors: ["Maxime Taffanel"],
   },
   {
     index: 5,
