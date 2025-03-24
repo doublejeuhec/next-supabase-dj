@@ -33,20 +33,39 @@ const ShowCard = ({
           alt={title}
           fill
           priority
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
       </div>
 
-      {/* Overlay that appears on hover */}
-      <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-6 text-white">
-        <div className="space-y-3">
-          <div className="text-sm text-brand-red font-medium mb-2">
-            {year} {directors.length > 0 && <>• {directors.join(", ")}</>}
+      {/* Overlay gradient that appears on hover */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/40 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-between p-6 text-white backdrop-blur-[2px] group-hover:backdrop-blur-[5px]">
+        <div className="flex flex-col gap-4 translate-y-8 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+          {/* Year at the top */}
+          <div className="text-base text-brand-red font-bold transform transition-all">
+            {year}
           </div>
 
-          <h3 className="text-lg font-bold mb-2 text-white">{title}</h3>
-          {writer && <p className="text-gray-200 text-sm">Par {writer}</p>}
-          <p className="text-gray-200 text-sm">{description}</p>
+          {/* Title bigger */}
+          <h3 className="text-2xl md:text-3xl font-bold text-white transition-all">
+            {title}
+          </h3>
+
+          {/* Writer name bigger */}
+          {writer && (
+            <p className="text-xl text-white/90 font-medium">{writer}</p>
+          )}
+
+          {/* Directors with "mise en scène" text */}
+          {directors.length > 0 && (
+            <p className="text-gray-200 text-base">
+              Mise en scène par {directors.join(", ")}
+            </p>
+          )}
+
+          {/* Description */}
+          <p className="text-gray-300 text-base line-clamp-3 transition-all duration-500 pt-2">
+            {description}
+          </p>
         </div>
 
         {youtubeUrl && (
@@ -54,11 +73,11 @@ const ShowCard = ({
             href={youtubeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="self-center mt-auto"
+            className="self-center mt-auto translate-y-8 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100"
           >
-            <div className="rounded-full bg-brand-red p-3 flex items-center justify-center w-12 h-12 hover:bg-opacity-80 transition-colors">
+            <div className="rounded-full bg-brand-red p-3 flex items-center justify-center w-14 h-14 hover:bg-opacity-90 transition-all hover:scale-110 shadow-lg hover:shadow-brand-red/30">
               <Play
-                className="w-6 h-6 text-white fill-current"
+                className="w-7 h-7 text-white fill-current"
                 strokeWidth={0.5}
               />
             </div>

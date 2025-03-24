@@ -1,5 +1,4 @@
 import { createClient } from "@/utils/supabase/server";
-import Link from "next/link";
 import { NavLinks } from "./nav-links";
 import { ThemeSwitcher } from "./theme-switcher";
 import UserAvatarDropdown from "./user-avatar-dropdown";
@@ -29,9 +28,7 @@ export default async function AuthButton() {
 
   return (
     <div className="flex items-center gap-4">
-      <Link href="/promos" className="text-primary-foreground hover:opacity-80">
-        Voir les cocos
-      </Link>
+      <NavLinks />
       <UserAvatarDropdown user={profileData} />
       <ThemeSwitcher />
     </div>
