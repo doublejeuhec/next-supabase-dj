@@ -73,3 +73,32 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Scrollbar hiding utility */
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For Firefox */
+  .scrollbar-hide {
+    scrollbar-width: none;
+  }
+
+  /* Floating animation for decorative elements */
+  @keyframes float {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+      transform: translate(10px, -10px) rotate(5deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+  }
+
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+  }
+}

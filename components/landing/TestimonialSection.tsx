@@ -1,43 +1,241 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { FaStar } from "react-icons/fa";
+import { PiFlowerLotusThin } from "react-icons/pi";
+
 const TestimonialSection = () => {
+  const topRowRef = useRef<HTMLDivElement>(null);
+  const bottomRowRef = useRef<HTMLDivElement>(null);
+  const [decorations, setDecorations] = useState<
+    Array<{
+      id: number;
+      left: string;
+      top: string;
+      delay: string;
+      rotate: string;
+      scale: string;
+      isStar: boolean;
+      size: number;
+    }>
+  >([]);
+
+  // Generate decorative elements after mount to avoid hydration errors
+  useEffect(() => {
+    const newDecorations = Array.from({ length: 15 }, (_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 5}s`,
+      rotate: `${Math.random() * 360}deg`,
+      scale: `${0.5 + Math.random()}`,
+      isStar: Math.random() > 0.5,
+      size: Math.random() * 20 + 10,
+    }));
+    setDecorations(newDecorations);
+  }, []);
+
+  useEffect(() => {
+    const topRow = topRowRef.current;
+    const bottomRow = bottomRowRef.current;
+    if (!topRow || !bottomRow) return;
+
+    // Clone nodes for infinite scroll effect
+    const cloneTopRowContent = () => {
+      const items = Array.from(topRow.children);
+      items.forEach((item) => {
+        const clone = item.cloneNode(true);
+        topRow.appendChild(clone);
+      });
+    };
+
+    const cloneBottomRowContent = () => {
+      const items = Array.from(bottomRow.children);
+      items.forEach((item) => {
+        const clone = item.cloneNode(true);
+        bottomRow.appendChild(clone);
+      });
+    };
+
+    cloneTopRowContent();
+    cloneBottomRowContent();
+
+    // Animation parameters
+    let topPosition = 0;
+    let bottomPosition = 0;
+    let topLastTimestamp = 0;
+    let bottomLastTimestamp = 0;
+    const topSpeed = 0.05; // pixels per millisecond
+    const bottomSpeed = 0.04; // pixels per millisecond
+
+    // Separate animation functions for clearer logic
+    const animateTopRow = (timestamp: number) => {
+      if (!topLastTimestamp) {
+        topLastTimestamp = timestamp;
+      }
+
+      const elapsed = timestamp - topLastTimestamp;
+      topLastTimestamp = timestamp;
+
+      // Top row moves right to left (negative transform increases)
+      topPosition += topSpeed * elapsed;
+      if (topPosition >= topRow.scrollWidth / 2) {
+        topPosition = 0;
+      }
+      topRow.style.transform = `translateX(-${topPosition}px)`;
+
+      requestAnimationFrame(animateTopRow);
+    };
+
+    const animateBottomRow = (timestamp: number) => {
+      if (!bottomLastTimestamp) {
+        bottomLastTimestamp = timestamp;
+      }
+
+      const elapsed = timestamp - bottomLastTimestamp;
+      bottomLastTimestamp = timestamp;
+
+      // Bottom row moves left to right (positive transform increases)
+      bottomPosition += bottomSpeed * elapsed;
+      if (bottomPosition >= bottomRow.scrollWidth / 2) {
+        bottomPosition = 0;
+      }
+
+      // Using a positive value for translateX makes it move right
+      bottomRow.style.transform = `translateX(${bottomPosition}px)`;
+
+      requestAnimationFrame(animateBottomRow);
+    };
+
+    // Start both animations
+    const topAnimId = requestAnimationFrame(animateTopRow);
+    const bottomAnimId = requestAnimationFrame(animateBottomRow);
+
+    return () => {
+      cancelAnimationFrame(topAnimId);
+      cancelAnimationFrame(bottomAnimId);
+    };
+  }, []);
+
+  // Split testimonials into two rows
+  const firstHalf = testimonials.slice(0, testimonials.length / 2);
+  const secondHalf = testimonials.slice(testimonials.length / 2);
+
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 bg-background relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {decorations.map((item) => (
+          <div
+            key={item.id}
+            className="absolute text-brand-red/20 animate-float"
+            style={{
+              left: item.left,
+              top: item.top,
+              animationDelay: item.delay,
+              transform: `rotate(${item.rotate}) scale(${item.scale})`,
+            }}
+          >
+            {item.isStar ? (
+              <FaStar size={item.size} />
+            ) : (
+              <PiFlowerLotusThin size={item.size} />
+            )}
+          </div>
+        ))}
+      </div>
+
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 text-foreground">
             Ce qu'ils disent de nous
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Quelques témoignages d'anciens, de spectateurs et de professionnels
-            qui ont collaboré avec Double Jeu.
-          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-border"
-            >
-              <div className="flex items-center mb-4">
-                <div className="mr-4">
-                  <div className="w-12 h-12 rounded-full bg-brand-red flex items-center justify-center text-white font-bold">
-                    {testimonial.name.charAt(0)}
+        {/* First row - moves right to left */}
+        <div className="overflow-hidden pb-6 mx-auto">
+          <div
+            ref={topRowRef}
+            className="flex space-x-6"
+            style={{ willChange: "transform" }}
+          >
+            {firstHalf.map((testimonial, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 bg-card p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-border min-w-[280px] max-w-[280px] relative"
+              >
+                {/* Decorative elements */}
+                <div className="absolute -top-2 -right-2 text-brand-red">
+                  <FaStar size={20} />
+                </div>
+                <div className="absolute -bottom-2 -left-2 text-brand-red">
+                  <PiFlowerLotusThin size={24} />
+                </div>
+
+                <div className="flex items-center mb-3">
+                  <div className="mr-3">
+                    <div className="w-10 h-10 rounded-full bg-brand-red flex items-center justify-center text-white font-bold">
+                      {testimonial.name.charAt(0)}
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-foreground text-sm">
+                      {testimonial.name}
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      {testimonial.show}
+                    </p>
                   </div>
                 </div>
-                <div>
-                  <h3 className="font-bold text-foreground">
-                    {testimonial.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {testimonial.title}
-                  </p>
-                </div>
+                <p className="text-muted-foreground italic text-sm">
+                  "{testimonial.quote}"
+                </p>
               </div>
-              <p className="text-muted-foreground italic">
-                "{testimonial.quote}"
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        {/* Second row - moves left to right */}
+        <div className="overflow-hidden pb-8 mx-auto">
+          <div
+            ref={bottomRowRef}
+            className="flex space-x-6"
+            style={{ willChange: "transform" }}
+          >
+            {secondHalf.map((testimonial, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 bg-card p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-border min-w-[280px] max-w-[280px] relative"
+              >
+                {/* Decorative elements */}
+                <div className="absolute -top-2 -right-2 text-brand-red">
+                  <FaStar size={20} />
+                </div>
+                <div className="absolute -bottom-2 -left-2 text-brand-red">
+                  <PiFlowerLotusThin size={24} />
+                </div>
+
+                <div className="flex items-center mb-3">
+                  <div className="mr-3">
+                    <div className="w-10 h-10 rounded-full bg-brand-red flex items-center justify-center text-white font-bold">
+                      {testimonial.name.charAt(0)}
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-foreground text-sm">
+                      {testimonial.name}
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      {testimonial.show}
+                    </p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground italic text-sm">
+                  "{testimonial.quote}"
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -46,22 +244,56 @@ const TestimonialSection = () => {
 
 const testimonials = [
   {
-    name: "Sophie Martin",
-    title: "Ancienne de la troupe (Promo 2018)",
-    quote:
-      "Faire partie de Double Jeu a été l'une des expériences les plus enrichissantes de mon parcours à HEC. J'y ai développé des compétences qui me servent aujourd'hui dans ma vie professionnelle.",
+    name: "Alexis Maquet",
+    show: "A vu Un fil à la patte",
+    quote: "Un spectacle qui m'a tenu en haleine du début à la fin !",
   },
   {
-    name: "Thomas Dubois",
-    title: "Spectateur fidèle",
-    quote:
-      "Je suis impressionné chaque année par la qualité des spectacles de Double Jeu. Le niveau est vraiment professionnel et l'énergie des étudiants sur scène est communicative !",
+    name: "Charles-Mathis Verbist",
+    show: "A vu Le songe d'une nuit d'été",
+    quote: "Impressionné par le talent de ces étudiants, à voir absolument.",
   },
   {
-    name: "Jean Lefèvre",
-    title: "Metteur en scène",
+    name: "Emma Velé",
+    show: "A vu Hortense a dit j'mens fous",
+    quote: "Une mise en scène audacieuse qui fonctionne parfaitement.",
+  },
+  {
+    name: "Lise Le Floch",
+    show: "A vu Un fil à la patte",
+    quote: "J'ai ri, j'ai pleuré, je reviendrai l'année prochaine !",
+  },
+  {
+    name: "Gabriel Engel",
+    show: "A vu Hortense a dit j'mens fous",
+    quote: "Double Jeu nous offre encore une fois un moment de pur théâtre.",
+  },
+  {
+    name: "Luce Faget",
+    show: "A vu Le songe d'une nuit d'été",
+    quote: "Quelle énergie sur scène ! Bravo à toute la troupe.",
+  },
+  {
+    name: "Arnault Mirante",
+    show: "A vu Un fil à la patte",
+    quote: "Des textes intelligents servis par de jeunes talents prometteurs.",
+  },
+  {
+    name: "Raoul Croonenberghs",
+    show: "A vu Le songe d'une nuit d'été",
     quote:
-      "Travailler avec les étudiants de Double Jeu est toujours un plaisir. Leur motivation, leur sérieux et leur créativité permettent de monter des spectacles ambitieux.",
+      "Une pièce qui démontre tout le potentiel créatif des étudiants HEC.",
+  },
+  {
+    name: "Marie Lambert",
+    show: "A vu Hortense a dit j'mens fous",
+    quote:
+      "Un moment magique qui fait oublier qu'on est dans un théâtre étudiant.",
+  },
+  {
+    name: "Thomas Renard",
+    show: "A vu Un fil à la patte",
+    quote: "Double Jeu continue de surprendre et d'émerveiller chaque année.",
   },
 ];
 
