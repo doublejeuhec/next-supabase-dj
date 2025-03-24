@@ -3,6 +3,7 @@ import { NavLinks } from "./nav-links";
 import { ThemeSwitcher } from "./theme-switcher";
 import { Separator } from "./ui/separator";
 import UserAvatarDropdown from "./user-avatar-dropdown";
+import Link from "next/link";
 
 export default async function AuthButton() {
   const supabase = await createClient();
@@ -33,7 +34,7 @@ export default async function AuthButton() {
 
   return (
     <div className="flex items-center gap-10 text-primary-foreground dark:text-foreground">
-      <NavLinks />
+      <Link href="/promos" className="text-primary-foreground dark:text-foreground text-base font-semibold">Voir les cocos</Link>
       <UserAvatarDropdown user={profileData} />
       <Separator
         orientation="vertical"
