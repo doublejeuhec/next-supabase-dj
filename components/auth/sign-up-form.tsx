@@ -30,6 +30,10 @@ export function SignUpForm({ message }: { message?: Message }) {
   const [selectedCompany, setSelectedCompany] = useState<string>("");
   const [selectedJob, setSelectedJob] = useState<string>("");
   const [selectedYear, setSelectedYear] = useState<string>("");
+  const [secretPassword, setSecretPassword] = useState<string>("");
+  const [secretPasswordError, setSecretPasswordError] = useState<string | null>(
+    null
+  );
 
   // Convertir les tableaux de chaînes en tableaux d'options pour MultipleSelector
   const assoOptions: Option[] = associations.map((asso) => ({
@@ -38,6 +42,12 @@ export function SignUpForm({ message }: { message?: Message }) {
   }));
 
   const handleSubmit = async (formData: FormData) => {
+    // Vérifier le mot de passe secret
+    if (secretPassword !== "tirebouchonchonchonchonchon") {
+      setSecretPasswordError("Le mot de passe secret est incorrect");
+      return;
+    }
+
     // Ajouter les options sélectionnées aux données du formulaire
     if (selectedAsso.length > 0) {
       formData.append(
@@ -78,6 +88,23 @@ export function SignUpForm({ message }: { message?: Message }) {
       </div>
 
       <div className="flex flex-col gap-4">
+        <div className="space-y-2">
+          <FloatingLabelInput
+            label="Mot de passe secret de la troupe"
+            name="secret_password"
+            type="password"
+            required
+            value={secretPassword}
+            onChange={(e) => {
+              setSecretPassword(e.target.value);
+              setSecretPasswordError(null);
+            }}
+          />
+          {secretPasswordError && (
+            <p className="text-sm text-destructive">{secretPasswordError}</p>
+          )}
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <FloatingLabelInput
             label="Prénom"
@@ -127,7 +154,9 @@ export function SignUpForm({ message }: { message?: Message }) {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="other_hec_asso">Étais-tu dans d'autres assos à HEC ?</Label>
+          <Label htmlFor="other_hec_asso">
+            Étais-tu dans d'autres assos à HEC ?
+          </Label>
           <MultipleSelector
             value={selectedAsso}
             onChange={setSelectedAsso}
@@ -138,7 +167,9 @@ export function SignUpForm({ message }: { message?: Message }) {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="company">Dans quelle entreprise travailles-tu ?</Label>
+          <Label htmlFor="company">
+            Dans quelle entreprise travailles-tu ?
+          </Label>
           <Select value={selectedCompany} onValueChange={setSelectedCompany}>
             <SelectTrigger>
               <SelectValue placeholder="Sélectionne ton entreprise" />
@@ -171,6 +202,7 @@ export function SignUpForm({ message }: { message?: Message }) {
           </Select>
         </div>
 
+        <Label htmlFor="password">Choisis un mot de passe</Label>
         <FloatingLabelInput
           label="Mot de passe"
           name="password"
