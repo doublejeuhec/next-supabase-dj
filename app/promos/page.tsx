@@ -1,6 +1,13 @@
 "use client";
 
 import MemberCard from "@/components/cards/MemberCard";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { promos } from "@/data/promos";
 import { useState } from "react";
 
@@ -20,18 +27,22 @@ export default function PromosPage() {
           </div>
 
           <div className="mb-8 flex justify-center">
-            <div className="bg-card p-4 rounded-xl inline-flex shadow-sm border border-border">
-              <select
-                className="px-4 py-2 border border-input rounded-md text-lg font-medium text-foreground bg-background"
+            <div className="bg-card rounded-xl inline-flex shadow-sm p-1">
+              <Select
                 value={selectedPromo}
-                onChange={(e) => setSelectedPromo(e.target.value)}
+                onValueChange={(value) => setSelectedPromo(value)}
               >
-                {Object.keys(promos).map((year) => (
-                  <option key={year} value={year}>
-                    Promotion {year}
-                  </option>
-                ))}
-              </select>
+                <SelectTrigger className="w-55 text-lg font-medium">
+                  <SelectValue placeholder="Sélectionner une année" />
+                </SelectTrigger>
+                <SelectContent>
+                  {Object.keys(promos).map((year) => (
+                    <SelectItem key={year} value={year}>
+                      Promotion {year}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           </div>
 
