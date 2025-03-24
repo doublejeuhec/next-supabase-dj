@@ -31,14 +31,14 @@ export function SignUpForm({ message }: { message?: Message }) {
   const [selectedJob, setSelectedJob] = useState<string>("");
   const [selectedYear, setSelectedYear] = useState<string>("");
 
-  // Convert string arrays to Option arrays for MultipleSelector
+  // Convertir les tableaux de chaînes en tableaux d'options pour MultipleSelector
   const assoOptions: Option[] = associations.map((asso) => ({
     value: asso,
     label: asso,
   }));
 
   const handleSubmit = async (formData: FormData) => {
-    // Add the selected options to the form data
+    // Ajouter les options sélectionnées aux données du formulaire
     if (selectedAsso.length > 0) {
       formData.append(
         "other_hec_asso",
@@ -58,7 +58,7 @@ export function SignUpForm({ message }: { message?: Message }) {
       formData.append("join_year", selectedYear);
     }
 
-    // Call the action
+    // Appeler l'action
     await signUpAction(formData);
   };
 
@@ -68,11 +68,11 @@ export function SignUpForm({ message }: { message?: Message }) {
       action={handleSubmit}
     >
       <div className="space-y-2">
-        <h1 className="text-2xl font-medium">Sign up</h1>
+        <h1 className="text-2xl font-medium">S'inscrire</h1>
         <p className="text-sm text-foreground">
-          Already have an account?{" "}
+          Vous avez déjà un compte ?{" "}
           <Link className="text-primary font-medium underline" href="/sign-in">
-            Sign in
+            Se connecter
           </Link>
         </p>
       </div>
@@ -80,13 +80,13 @@ export function SignUpForm({ message }: { message?: Message }) {
       <div className="flex flex-col gap-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <FloatingLabelInput
-            label="First Name"
+            label="Prénom"
             name="first_name"
             autoComplete="given-name"
             required
           />
           <FloatingLabelInput
-            label="Last Name"
+            label="Nom de famille"
             name="last_name"
             autoComplete="family-name"
             required
@@ -101,20 +101,20 @@ export function SignUpForm({ message }: { message?: Message }) {
           required
         />
 
-        <FloatingLabelInput label="Nickname (optional)" name="nickname" />
+        <FloatingLabelInput label="surnom dans la troupe" name="nickname" />
 
         <FloatingLabelInput
-          label="Phone Number (optional)"
+          label="Numéro de téléphone (optionnel)"
           name="phone_number"
           type="tel"
           autoComplete="tel"
         />
 
         <div className="space-y-2">
-          <Label htmlFor="join_year">Join Year</Label>
+          <Label htmlFor="join_year">En quelle année as-tu rejoint DJ ?</Label>
           <Select value={selectedYear} onValueChange={setSelectedYear}>
             <SelectTrigger>
-              <SelectValue placeholder="Select your join year" />
+              <SelectValue placeholder="Sélectionne l'année" />
             </SelectTrigger>
             <SelectContent>
               {joinYears.map((year) => (
@@ -127,24 +127,24 @@ export function SignUpForm({ message }: { message?: Message }) {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="other_hec_asso">HEC Associations</Label>
+          <Label htmlFor="other_hec_asso">Étais-tu dans d'autres assos à HEC ?</Label>
           <MultipleSelector
             value={selectedAsso}
             onChange={setSelectedAsso}
-            placeholder="Select your associations"
+            placeholder="Sélectionne tes associations"
             options={assoOptions}
             hidePlaceholderWhenSelected
           />
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="company">Company (optional)</Label>
+          <Label htmlFor="company">Dans quelle entreprise travailles-tu ?</Label>
           <Select value={selectedCompany} onValueChange={setSelectedCompany}>
             <SelectTrigger>
-              <SelectValue placeholder="Select your company" />
+              <SelectValue placeholder="Sélectionne ton entreprise" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="none">None</SelectItem>
+              <SelectItem value="none">Aucune</SelectItem>
               {companies.map((company) => (
                 <SelectItem key={company} value={company}>
                   {company}
@@ -155,13 +155,13 @@ export function SignUpForm({ message }: { message?: Message }) {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="job">Job (optional)</Label>
+          <Label htmlFor="job">Quel est ton boulot ?</Label>
           <Select value={selectedJob} onValueChange={setSelectedJob}>
             <SelectTrigger>
-              <SelectValue placeholder="Select your job" />
+              <SelectValue placeholder="Sélectionne ton poste" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="none">None</SelectItem>
+              <SelectItem value="none">Aucun</SelectItem>
               {jobs.map((job) => (
                 <SelectItem key={job} value={job}>
                   {job}
@@ -172,7 +172,7 @@ export function SignUpForm({ message }: { message?: Message }) {
         </div>
 
         <FloatingLabelInput
-          label="Password"
+          label="Mot de passe"
           name="password"
           type="password"
           autoComplete="new-password"
@@ -180,7 +180,9 @@ export function SignUpForm({ message }: { message?: Message }) {
           required
         />
 
-        <SubmitButton pendingText="Signing up...">Sign up</SubmitButton>
+        <SubmitButton pendingText="Inscription en cours...">
+          S'inscrire
+        </SubmitButton>
 
         {formMessage && <FormMessage message={formMessage} />}
       </div>
