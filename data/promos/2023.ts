@@ -2,7 +2,7 @@ import { Member } from "@/types/member";
 
 const promo2023: Member[] = [
   {
-    title: "Anne-Quiterie Leclerc",
+    title: "Anne-Quiterie Leclercq",
     src: "/images/CF/Promo2023/optimized/aq.jpg",
     poste: "Trésorière",
     roles: {
@@ -85,7 +85,7 @@ const promo2023: Member[] = [
       FLP: "Firmin, M. Lentery et un policier",
       SNE: "Puck",
     },
-    commentaireOR: "",
+    commentaireOR: "qu’un jour il a joué autre chose qu’un valet",
   },
   {
     title: "Marius Dalloz",

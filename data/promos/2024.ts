@@ -11,7 +11,7 @@ const promo2024: Member[] = [
     commentaireOR: "",
   },
   {
-    title: "Ambre Caillaux",
+    title: "Ambre Cailleaux",
     src: "/images/CF/Promo2024/optimized/Ambre.jpg",
     poste: "Trésorière",
     roles: {
