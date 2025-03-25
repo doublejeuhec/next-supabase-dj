@@ -43,7 +43,7 @@ export function SignUpForm({ message }: { message?: Message }) {
 
   const handleSubmit = async (formData: FormData) => {
     // Vérifier le mot de passe secret
-    if (secretPassword !== "tirebouchonchonchonchonchon") {
+    if (secretPassword !== "tirebouchon") {
       setSecretPasswordError("Le mot de passe secret est incorrect");
       return;
     }
