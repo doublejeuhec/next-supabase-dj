@@ -6,6 +6,8 @@ const promo2023: Member[] = [
     src: "/images/CF/Promo2023/optimized/aq.jpg",
     poste: "Trésorière",
     roles: {
+      MML: "Paysanne",
+      FLP: "Nini Galant et une femme dans l'escalier",
       JV: "Rosaura",
     },
     commentaireOR: "",
@@ -13,54 +15,63 @@ const promo2023: Member[] = [
   {
     title: "Henri de Durfort",
     src: "/images/CF/Promo2023/optimized/henri.jpg",
-    poste: "",
+    poste: "Responsable planning et Hébertot",
     roles: {
-      SNE: "",
+      MML: "Géronte",
+      FLP: "Emile, un courant d'air et un policier",
+      SNE: "Pierre Lecoing et Egée",
     },
-    commentaireOR: "",
+    commentaireOR: "qu'il aurait négocié une scène de 42 mètres carrés",
   },
   {
     title: "Nicolas Catez",
     src: "/images/CF/Promo2023/optimized/nico.jpg",
-    poste: "",
+    poste: "Responsable intégration et cohésion",
     roles: {
-      JV: "",
+      MML: "Valet",
+      JV: "Policier",
+      SNE: "Démétrius et Thomas Groin (qui joue le Mur)",
     },
-    commentaireOR: "",
+    commentaireOR: "qu'il aurait joué nu sur la scène du théâtre Hébertot.",
   },
   {
     title: "Marc-Antoine Estaben",
     src: "/images/CF/Promo2023/optimized/marco.jpg",
     poste: "Vice-président",
     roles: {
-      JV: "",
+      MML: "Sganarelle",
+      JV: "Policier",
+      SNE: "Nick Bottom (qui joue Pyrame)",
     },
     commentaireOR: "",
   },
   {
     title: "Sofia El Mountassir",
     src: "/images/CF/Promo2023/optimized/sofia.jpg",
-    poste: "",
+    poste: "Responsable d-day",
     roles: {
-      SNE: "",
+      MML: "Martine",
+      SNE: "Héléna",
     },
     commentaireOR: "",
   },
   {
     title: "Louise Nègre",
     src: "/images/CF/Promo2023/optimized/louise.jpg",
-    poste: "",
+    poste: "Membre éminente partie trop vite",
     roles: {
-      FIL: "",
+      MML: "Lucinde",
+      FLP: "Baronne Duverger",
     },
     commentaireOR: "",
   },
   {
     title: "Victoire Denizot",
     src: "/images/CF/Promo2023/optimized/victoire.jpg",
-    poste: "",
+    poste: "Membre éminente partie trop vite",
     roles: {
-      FIL: "",
+      MML: "Jacqueline",
+      FLP: "Jean",
     },
     commentaireOR:
       "que son dos va bien malgré des heures passées à dormir sur un escalier",
@@ -70,7 +81,9 @@ const promo2023: Member[] = [
     src: "/images/CF/Promo2023/optimized/hadrien.jpg",
     poste: "Vice-président",
     roles: {
-      FIL: "",
+      MML: "M. Robert",
+      FLP: "Firmin, M. Lentery et un policier",
+      SNE: "Puck",
     },
     commentaireOR: "",
   },
@@ -79,27 +92,30 @@ const promo2023: Member[] = [
     src: "/images/CF/Promo2023/optimized/marius.jpg",
     poste: "Président",
     roles: {
-      SNE: "Obéron",
+      MML: "Valet",
+      SNE: "Obéron et François Flûte (qui joue Thisbé)",
     },
     commentaireOR: "",
   },
   {
     title: "Ariane de Saint Victor",
     src: "/images/CF/Promo2023/optimized/ariane.jpg",
-    poste: "",
+    poste: "Membre éminente partie trop vite",
     roles: {
-      FIL: "",
+      MML: "Paysanne",
+      FLP: "Marceline",
     },
     commentaireOR: "",
   },
   {
     title: "Tiphaine Bechade",
     src: "/images/CF/Promo2023/optimized/tiphaineB.jpg",
-    poste: "",
+    poste: "Membre éminente partie trop vite",
     roles: {
-      FIL: "",
+      MML: "Léandre",
+      FLP: "Carmela",
     },
-    commentaireOR: "",
+    commentaireOR: "qu'elle traduit très bien, mais vraiment très bien.",
   },
 ];
 

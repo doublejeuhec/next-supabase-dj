@@ -33,7 +33,7 @@ const promo2022: Member[] = [
     src: "/images/CF/Promo2022/optimized/violette.jpg",
     poste: "",
     roles: {
-      FIL: "",
+      FLP: "",
     },
     commentaireOR: "",
   },
@@ -42,7 +42,7 @@ const promo2022: Member[] = [
     src: "/images/CF/Promo2022/optimized/tiphainer.jpg",
     poste: "",
     roles: {
-      FIL: "",
+      FLP: "",
     },
     commentaireOR: "",
   },
@@ -52,7 +52,7 @@ const promo2022: Member[] = [
     src: "/images/CF/Promo2022/optimized/malo.jpg",
     poste: "",
     roles: {
-      FIL: "Pantalone",
+      FLP: "Pantalone",
     },
     commentaireOR:
       "que son dos va bien malgré des heures passées à dormir sur un escalier",
@@ -62,7 +62,7 @@ const promo2022: Member[] = [
     src: "/images/CF/Promo2022/optimized/charles.jpg",
     poste: "Président",
     roles: {
-      FIL: "",
+      FLP: "",
     },
     commentaireOR: "",
   },
