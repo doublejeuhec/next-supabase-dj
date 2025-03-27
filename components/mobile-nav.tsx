@@ -98,30 +98,12 @@ export function MobileNav({ isLoggedIn }: { isLoggedIn: boolean }) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[200px]">
-        <DropdownMenuItem asChild>
-          <a
-            href="#about"
-            className="cursor-pointer"
-            onClick={(e) => navigateToSection(e, "about")}
-          >
-            Qui sommes-nous
-          </a>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild>
-          <a
-            href="#previous-shows"
-            className="cursor-pointer"
-            onClick={(e) => navigateToSection(e, "previous-shows")}
-          >
-            Nos spectacles
-          </a>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild>
-          <Link href="/promos">Découvrir la troupe</Link>
-        </DropdownMenuItem>
-
-        {isLoggedIn && (
+        {isLoggedIn ? (
+          // Authenticated user menu
           <>
+            <DropdownMenuItem asChild>
+              <Link href="/protected">Espace membre</Link>
+            </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <Link href="/promos">Voir les cocos</Link>
             </DropdownMenuItem>
@@ -131,6 +113,31 @@ export function MobileNav({ isLoggedIn }: { isLoggedIn: boolean }) {
             </DropdownMenuItem>
             <DropdownMenuItem onClick={handleSignOut}>
               Se déconnecter
+            </DropdownMenuItem>
+          </>
+        ) : (
+          // Public menu for non-authenticated users
+          <>
+            <DropdownMenuItem asChild>
+              <a
+                href="#about"
+                className="cursor-pointer"
+                onClick={(e) => navigateToSection(e, "about")}
+              >
+                Qui sommes-nous
+              </a>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <a
+                href="#previous-shows"
+                className="cursor-pointer"
+                onClick={(e) => navigateToSection(e, "previous-shows")}
+              >
+                Nos spectacles
+              </a>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/promos">Découvrir la troupe</Link>
             </DropdownMenuItem>
           </>
         )}
