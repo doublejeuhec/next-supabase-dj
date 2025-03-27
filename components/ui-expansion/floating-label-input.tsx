@@ -43,7 +43,11 @@ type FloatingLabelInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 const FloatingLabelInput = React.forwardRef<
   React.ElementRef<typeof FloatingInput>,
   FloatingLabelInputProps
->(({ id, label, ...props }, ref) => {
+>(({ id: providedId, label, ...props }, ref) => {
+  // Generate a consistent ID if none is provided
+  const generatedId = React.useId();
+  const id = providedId || generatedId;
+
   return (
     <div className="relative">
       <FloatingInput ref={ref} id={id} {...props} />

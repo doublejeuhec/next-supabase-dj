@@ -8,6 +8,18 @@ import MultipleSelector, {
   Option,
 } from "@/components/ui-expansion/multiple-selector";
 import {
+  Command,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -17,10 +29,10 @@ import {
 import { companies } from "@/data/companies";
 import { associations } from "@/data/hec/list-asso";
 import { jobs } from "@/data/jobs";
+import { Check, ChevronsUpDown } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { Label } from "../ui/label";
-
 const currentYear = new Date().getFullYear();
 const joinYears = Array.from({ length: 51 }, (_, i) => currentYear - i);
 
@@ -28,7 +40,11 @@ export function SignUpForm({ message }: { message?: Message }) {
   const [formMessage, setFormMessage] = useState<Message | undefined>(message);
   const [selectedAsso, setSelectedAsso] = useState<Option[]>([]);
   const [selectedCompany, setSelectedCompany] = useState<string>("");
+  const [companyOpen, setCompanyOpen] = useState(false);
+  const [companyInput, setCompanyInput] = useState("");
   const [selectedJob, setSelectedJob] = useState<string>("");
+  const [jobOpen, setJobOpen] = useState(false);
+  const [jobInput, setJobInput] = useState("");
   const [selectedYear, setSelectedYear] = useState<string>("");
   const [secretPassword, setSecretPassword] = useState<string>("");
   const [secretPasswordError, setSecretPasswordError] = useState<string | null>(
@@ -40,6 +56,46 @@ export function SignUpForm({ message }: { message?: Message }) {
     value: asso,
     label: asso,
   }));
+
+  // Filter companies based on input
+  const filteredCompanies = companyInput
+    ? companies.filter((company) =>
+        company.toLowerCase().includes(companyInput.toLowerCase())
+      )
+    : companies;
+
+  // Filter jobs based on input
+  const filteredJobs = jobInput
+    ? jobs.filter((job) => job.toLowerCase().includes(jobInput.toLowerCase()))
+    : jobs;
+
+  // Handle popover close for company
+  const handleCompanyOpenChange = (open: boolean) => {
+    setCompanyOpen(open);
+    if (open && selectedCompany) {
+      // When opening, populate the input with current selection
+      setCompanyInput(selectedCompany);
+    }
+    if (!open && companyInput && !selectedCompany) {
+      // If popover closes and we have input but no selection,
+      // use the input as the selected value
+      setSelectedCompany(companyInput);
+    }
+  };
+
+  // Handle popover close for job
+  const handleJobOpenChange = (open: boolean) => {
+    setJobOpen(open);
+    if (open && selectedJob) {
+      // When opening, populate the input with current selection
+      setJobInput(selectedJob);
+    }
+    if (!open && jobInput && !selectedJob) {
+      // If popover closes and we have input but no selection,
+      // use the input as the selected value
+      setSelectedJob(jobInput);
+    }
+  };
 
   const handleSubmit = async (formData: FormData) => {
     // Vérifier le mot de passe secret
@@ -56,11 +112,11 @@ export function SignUpForm({ message }: { message?: Message }) {
       );
     }
 
-    if (selectedCompany && selectedCompany !== "none") {
+    if (selectedCompany) {
       formData.append("company", selectedCompany);
     }
 
-    if (selectedJob && selectedJob !== "none") {
+    if (selectedJob) {
       formData.append("job", selectedJob);
     }
 
@@ -166,40 +222,154 @@ export function SignUpForm({ message }: { message?: Message }) {
           />
         </div>
 
+        <div className="rounded-md bg-muted p-4 mt-2">
+          <p className="text-sm">
+            Petit moment networking pour s'entraider — le réseau c'est important
+            !
+          </p>
+        </div>
+
         <div className="space-y-2">
           <Label htmlFor="company">
             Dans quelle entreprise travailles-tu ?
           </Label>
-          <Select value={selectedCompany} onValueChange={setSelectedCompany}>
-            <SelectTrigger>
-              <SelectValue placeholder="Sélectionne ton entreprise" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="none">Aucune</SelectItem>
-              {companies.map((company) => (
-                <SelectItem key={company} value={company}>
-                  {company}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <Popover open={companyOpen} onOpenChange={handleCompanyOpenChange}>
+            <PopoverTrigger asChild>
+              <div
+                role="combobox"
+                aria-expanded={companyOpen}
+                className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 cursor-pointer"
+              >
+                {selectedCompany
+                  ? selectedCompany
+                  : "Sélectionne ou saisis ton entreprise"}
+                <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+              </div>
+            </PopoverTrigger>
+            <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
+              <Command shouldFilter={true}>
+                <CommandInput
+                  placeholder="Recherche d'entreprise..."
+                  className="h-9"
+                  value={companyInput}
+                  onValueChange={setCompanyInput}
+                />
+                <CommandList>
+                  {companyInput &&
+                    !filteredCompanies.some(
+                      (company) =>
+                        company.toLowerCase() === companyInput.toLowerCase()
+                    ) && (
+                      <CommandGroup heading="Créer nouveau">
+                        <CommandItem
+                          key="new"
+                          value={`new-${companyInput}`}
+                          onSelect={() => {
+                            setSelectedCompany(companyInput);
+                            setCompanyOpen(false);
+                          }}
+                        >
+                          Utiliser "{companyInput}"
+                        </CommandItem>
+                      </CommandGroup>
+                    )}
+
+                  <CommandGroup heading="Entreprises">
+                    {filteredCompanies.length === 0 && !companyInput && (
+                      <CommandItem disabled value="no-results">
+                        Aucune entreprise trouvée
+                      </CommandItem>
+                    )}
+
+                    {filteredCompanies.map((company) => (
+                      <CommandItem
+                        key={company}
+                        value={company}
+                        onSelect={() => {
+                          setSelectedCompany(company);
+                          setCompanyOpen(false);
+                        }}
+                      >
+                        {company}
+                        {selectedCompany === company && (
+                          <Check className="ml-auto h-4 w-4" />
+                        )}
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                </CommandList>
+              </Command>
+            </PopoverContent>
+          </Popover>
         </div>
 
         <div className="space-y-2">
           <Label htmlFor="job">Quel est ton boulot ?</Label>
-          <Select value={selectedJob} onValueChange={setSelectedJob}>
-            <SelectTrigger>
-              <SelectValue placeholder="Sélectionne ton poste" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="none">Aucun</SelectItem>
-              {jobs.map((job) => (
-                <SelectItem key={job} value={job}>
-                  {job}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <Popover open={jobOpen} onOpenChange={handleJobOpenChange}>
+            <PopoverTrigger asChild>
+              <div
+                role="combobox"
+                aria-expanded={jobOpen}
+                className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 cursor-pointer"
+              >
+                {selectedJob ? selectedJob : "Sélectionne ou saisis ton poste"}
+                <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+              </div>
+            </PopoverTrigger>
+            <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
+              <Command shouldFilter={true}>
+                <CommandInput
+                  placeholder="Recherche de poste..."
+                  className="h-9"
+                  value={jobInput}
+                  onValueChange={setJobInput}
+                />
+                <CommandList>
+                  {jobInput &&
+                    !filteredJobs.some(
+                      (job) => job.toLowerCase() === jobInput.toLowerCase()
+                    ) && (
+                      <CommandGroup heading="Créer nouveau">
+                        <CommandItem
+                          key="new"
+                          value={`new-${jobInput}`}
+                          onSelect={() => {
+                            setSelectedJob(jobInput);
+                            setJobOpen(false);
+                          }}
+                        >
+                          Utiliser "{jobInput}"
+                        </CommandItem>
+                      </CommandGroup>
+                    )}
+
+                  <CommandGroup heading="Postes">
+                    {filteredJobs.length === 0 && !jobInput && (
+                      <CommandItem disabled value="no-results">
+                        Aucun poste trouvé
+                      </CommandItem>
+                    )}
+
+                    {filteredJobs.map((job) => (
+                      <CommandItem
+                        key={job}
+                        value={job}
+                        onSelect={() => {
+                          setSelectedJob(job);
+                          setJobOpen(false);
+                        }}
+                      >
+                        {job}
+                        {selectedJob === job && (
+                          <Check className="ml-auto h-4 w-4" />
+                        )}
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                </CommandList>
+              </Command>
+            </PopoverContent>
+          </Popover>
         </div>
 
         <Label htmlFor="password">Choisis un mot de passe</Label>
