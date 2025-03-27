@@ -144,7 +144,11 @@ export function MobileNav({ isLoggedIn }: { isLoggedIn: boolean }) {
 
         <DropdownMenuSeparator />
         <div className="flex justify-center py-2">
-          <ThemeSwitcher />
+          <ThemeSwitcher
+            variant="ghost"
+            iconClassName="text-foreground"
+            className="hover:bg-muted"
+          />
         </div>
       </DropdownMenuContent>
     </DropdownMenu>

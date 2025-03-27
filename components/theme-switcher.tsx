@@ -12,7 +12,19 @@ import { Laptop, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-const ThemeSwitcher = () => {
+interface ThemeSwitcherProps {
+  variant?: "default" | "outline" | "ghost";
+  iconClassName?: string;
+  size?: "default" | "sm" | "lg" | "icon";
+  className?: string;
+}
+
+const ThemeSwitcher = ({
+  variant = "outline",
+  iconClassName = "text-white dark:text-black",
+  size = "sm",
+  className = "bg-transparent dark:bg-transparent",
+}: ThemeSwitcherProps) => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -30,29 +42,13 @@ const ThemeSwitcher = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="outline"
-          size={"sm"}
-          className="bg-transparent dark:bg-transparent"
-        >
+        <Button variant={variant} size={size} className={className}>
           {theme === "light" ? (
-            <Sun
-              key="light"
-              size={ICON_SIZE}
-              className={"text-white dark:text-black"}
-            />
+            <Sun key="light" size={ICON_SIZE} className={iconClassName} />
           ) : theme === "dark" ? (
-            <Moon
-              key="dark"
-              size={ICON_SIZE}
-              className={"text-white dark:text-black"}
-            />
+            <Moon key="dark" size={ICON_SIZE} className={iconClassName} />
           ) : (
-            <Laptop
-              key="system"
-              size={ICON_SIZE}
-              className={"text-white dark:text-black"}
-            />
+            <Laptop key="system" size={ICON_SIZE} className={iconClassName} />
           )}
         </Button>
       </DropdownMenuTrigger>
