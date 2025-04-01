@@ -98,6 +98,7 @@ export const associations = [
   "Stochast'HEC",
   "The PhD Society",
   "ThumbsUp",
+  "Tr'HEC",
   "To Be Announced",
   "Trois Lettres HEC",
   "Uni'Run HEC",
