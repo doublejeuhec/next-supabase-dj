@@ -2,7 +2,7 @@ export const associations = [
   "180 Degrees Consulting HEC Paris",
   "Assrock HEC",
   "Avenir Vietnam",
-  "Backstage",
+  "Backstage n'existe pas",
   "Bureau des Arts d’HEC Paris",
   "Bureau Des Élèves HEC Paris",
   "Bureau des Juristes",
