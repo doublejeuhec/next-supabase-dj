@@ -1,3 +1,4 @@
+import MemberDirectory from "@/components/MemberDirectory";
 import { createClient } from "@/utils/supabase/server";
 import { Facebook, Image, MessageCircle } from "lucide-react";
 import { redirect } from "next/navigation";
@@ -12,6 +13,12 @@ export default async function ProtectedPage() {
   if (!user) {
     return redirect("/sign-in");
   }
+
+  // Fetch all members from the profiles table
+  const { data: members } = await supabase
+    .from("profiles")
+    .select("*")
+    .order("last_name", { ascending: true });
 
   const promoPhotos = [
     {
@@ -116,6 +123,11 @@ export default async function ProtectedPage() {
               ))}
             </div>
           </div>
+        </div>
+
+        {/* Member Directory Section - Outside the narrow container */}
+        <div className="max-w-5xl mx-auto mt-20">
+          <MemberDirectory members={members || []} />
         </div>
       </div>
     </div>
