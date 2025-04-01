@@ -1,6 +1,9 @@
 "use client";
 
 import { FloatingLabelInput } from "@/components/ui-expansion/floating-label-input";
+import MultipleSelector, {
+  Option,
+} from "@/components/ui-expansion/multiple-selector";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,6 +14,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { associations } from "@/data/hec/list-asso";
 import { User } from "@/types/database";
 import { createClient } from "@/utils/supabase/client";
 import { Loader2, Upload } from "lucide-react";
@@ -41,6 +45,19 @@ export function ProfileForm({ profile }: ProfileFormProps) {
     join_year: profile.join_year,
     avatar_url: profile.avatar_url || "",
   });
+
+  // Convert profile HEC associations to Option[] format for MultipleSelector
+  const [selectedAsso, setSelectedAsso] = useState<Option[]>(
+    profile.other_hec_asso
+      ? profile.other_hec_asso.map((asso) => ({ value: asso, label: asso }))
+      : []
+  );
+
+  // Convert the associations array to Option[] format
+  const assoOptions: Option[] = associations.map((asso) => ({
+    value: asso,
+    label: asso,
+  }));
 
   // Store the current avatar path for cleanup on new upload
   const [currentAvatarPath, setCurrentAvatarPath] = useState<string | null>(
@@ -169,6 +186,10 @@ export function ProfileForm({ profile }: ProfileFormProps) {
         company: formState.company || null,
         job: formState.job || null,
         avatar_url: formState.avatar_url || null,
+        other_hec_asso:
+          selectedAsso.length > 0
+            ? selectedAsso.map((asso) => asso.value)
+            : null,
         updated_at: new Date().toISOString(),
       })
       .eq("id", profile.id);
@@ -305,6 +326,18 @@ export function ProfileForm({ profile }: ProfileFormProps) {
               value={formState.phone_number}
               onChange={handleChange}
             />
+            <div className="space-y-2">
+              <label className="text-sm font-medium">
+                Associations HEC (facultatif)
+              </label>
+              <MultipleSelector
+                value={selectedAsso}
+                onChange={setSelectedAsso}
+                placeholder="Sélectionne tes associations"
+                options={assoOptions}
+                hidePlaceholderWhenSelected
+              />
+            </div>
           </CardContent>
 
           <CardHeader className="pt-6">
