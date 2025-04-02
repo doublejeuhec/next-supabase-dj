@@ -230,6 +230,16 @@ const testimonials = [
     quote: "Un spectacle qui m'a tenu en haleine du début à la fin !",
   },
   {
+    name: "Eliott Nahon",
+    show: "Les Jumeaux Vénitiens",
+    quote: "Fantastique !",
+  },
+  {
+    name: "Oussama Gherras",
+    show: "Le songe d'une nuit d'été",
+    quote: "J'adore le théâtre depuis que j'ai vu ce spectacle.",
+  },
+  {
     name: "Charles-Mathis Verbist",
     show: "A vu Le songe d'une nuit d'été",
     quote: "Impressionné par le talent de ces étudiants, à voir absolument.",
