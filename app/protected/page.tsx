@@ -55,12 +55,8 @@ export default async function ProtectedPage() {
                 </div>
               </div>
               <h2 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">
-                Rejoignez notre communauté Facebook
+                Groupe inter-gé - Verre le 12 avril!
               </h2>
-              <p className="mb-6 text-gray-600 dark:text-gray-300">
-                Participez aux discussions, restez informé des dernières
-                actualités et connectez-vous avec d'autres membres :
-              </p>
               <a
                 href="https://www.facebook.com/groups/3512056069101383/"
                 target="_blank"
@@ -81,10 +77,6 @@ export default async function ProtectedPage() {
               <h2 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">
                 🎭 Vénérables Masqués 🎭
               </h2>
-              <p className="mb-6 text-gray-600 dark:text-gray-300">
-                Rejoignez le groupe WhatsApp inter-promotion pour rester
-                connecté avec les membres de toutes les années :
-              </p>
               <a
                 href="https://chat.whatsapp.com/DYkEPd3flk546pUQjmmh0J"
                 target="_blank"
