@@ -5,6 +5,7 @@ import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import { ThemeProvider } from "next-themes";
 import { Geist, Oswald } from "next/font/google";
 import Link from "next/link";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -36,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={geistSans.className} suppressHydrationWarning>
-      <body className="bg-background text-foreground">
+      <body className="bg-background text-foreground" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -67,6 +68,17 @@ export default function RootLayout({
               <Footer />
             </div>
           </main>
+          <Toaster
+            position="bottom-right"
+            toastOptions={{
+              style: {
+                background: "var(--background)",
+                color: "var(--foreground)",
+                border: "1px solid var(--border)",
+              },
+              className: "rounded-md shadow-md",
+            }}
+          />
         </ThemeProvider>
       </body>
     </html>

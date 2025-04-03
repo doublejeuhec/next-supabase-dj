@@ -7,6 +7,7 @@ import { FloatingLabelInput } from "@/components/ui-expansion/floating-label-inp
 import MultipleSelector, {
   Option,
 } from "@/components/ui-expansion/multiple-selector";
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandGroup,
@@ -29,9 +30,10 @@ import {
 import { companies } from "@/data/companies";
 import { associations } from "@/data/hec/list-asso";
 import { jobs } from "@/data/jobs";
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check, ChevronsUpDown, EyeIcon, EyeOffIcon } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import { Label } from "../ui/label";
 const currentYear = new Date().getFullYear();
 const joinYears = Array.from({ length: 51 }, (_, i) => currentYear - i);
@@ -50,6 +52,18 @@ export function SignUpForm({ message }: { message?: Message }) {
   const [secretPasswordError, setSecretPasswordError] = useState<string | null>(
     null
   );
+  const [showSecretPassword, setShowSecretPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Show toast notification for errors
+  useEffect(() => {
+    if (formMessage && "error" in formMessage) {
+      toast.error(formMessage.error);
+    }
+    if (secretPasswordError) {
+      toast.error(secretPasswordError);
+    }
+  }, [formMessage, secretPasswordError]);
 
   // Convertir les tableaux de chaînes en tableaux d'options pour MultipleSelector
   const assoOptions: Option[] = associations.map((asso) => ({
@@ -132,6 +146,7 @@ export function SignUpForm({ message }: { message?: Message }) {
     <form
       className="flex-1 flex flex-col min-w-64 space-y-6"
       action={handleSubmit}
+      suppressHydrationWarning
     >
       <div className="space-y-2">
         <h1 className="text-2xl font-medium">S'inscrire</h1>
@@ -145,20 +160,36 @@ export function SignUpForm({ message }: { message?: Message }) {
 
       <div className="flex flex-col gap-4">
         <div className="space-y-2">
-          <FloatingLabelInput
-            label="Mot de passe secret de la troupe"
-            name="secret_password"
-            type="password"
-            required
-            value={secretPassword}
-            onChange={(e) => {
-              setSecretPassword(e.target.value);
-              setSecretPasswordError(null);
-            }}
-          />
-          {secretPasswordError && (
-            <p className="text-sm text-destructive">{secretPasswordError}</p>
-          )}
+          <div className="relative">
+            <FloatingLabelInput
+              label="Mot de passe secret de la troupe"
+              name="secret_password"
+              type={showSecretPassword ? "text" : "password"}
+              required
+              value={secretPassword}
+              onChange={(e) => {
+                setSecretPassword(e.target.value);
+                setSecretPasswordError(null);
+              }}
+              suppressHydrationWarning
+            />
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              className="absolute right-1 top-1/2 transform -translate-y-1/2"
+              onClick={() => setShowSecretPassword(!showSecretPassword)}
+            >
+              {showSecretPassword ? (
+                <EyeOffIcon className="h-4 w-4" />
+              ) : (
+                <EyeIcon className="h-4 w-4" />
+              )}
+              <span className="sr-only">
+                {showSecretPassword ? "Hide password" : "Show password"}
+              </span>
+            </Button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -373,20 +404,41 @@ export function SignUpForm({ message }: { message?: Message }) {
         </div>
 
         <Label htmlFor="password">Choisis un mot de passe</Label>
-        <FloatingLabelInput
-          label="Mot de passe"
-          name="password"
-          type="password"
-          autoComplete="new-password"
-          minLength={6}
-          required
-        />
+        <div className="relative">
+          <FloatingLabelInput
+            label="Mot de passe"
+            name="password"
+            type={showPassword ? "text" : "password"}
+            autoComplete="new-password"
+            minLength={6}
+            required
+            suppressHydrationWarning
+          />
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="absolute right-1 top-1/2 transform -translate-y-1/2"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? (
+              <EyeOffIcon className="h-4 w-4" />
+            ) : (
+              <EyeIcon className="h-4 w-4" />
+            )}
+            <span className="sr-only">
+              {showPassword ? "Hide password" : "Show password"}
+            </span>
+          </Button>
+        </div>
 
         <SubmitButton pendingText="Inscription en cours...">
           S'inscrire
         </SubmitButton>
 
-        {formMessage && <FormMessage message={formMessage} />}
+        {formMessage && "success" in formMessage && (
+          <FormMessage message={formMessage} />
+        )}
       </div>
     </form>
   );
