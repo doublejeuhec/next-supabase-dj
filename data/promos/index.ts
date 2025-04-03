@@ -12,6 +12,7 @@ export const promos: Record<string, Member[]> = {
 };
 
 export const roleAbbreviations: Record<string, string> = {
+  LE: "Les Éstivants",
   MML: "Le médecin malgré lui",
   FLP: "Un fil à la patte",
   JV: "Les Jumeaux Vénitiens",
