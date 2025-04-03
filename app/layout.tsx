@@ -10,7 +10,9 @@ import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000";
+  : process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://doublejeuhec.fr";
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
