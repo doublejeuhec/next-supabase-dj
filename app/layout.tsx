@@ -17,6 +17,28 @@ export const metadata = {
   title: "Double Jeu",
   description: "La troupe de théâtre d'HEC Paris",
   viewport: "width=device-width, initial-scale=1",
+  openGraph: {
+    title: "Double Jeu",
+    description: "La troupe de théâtre d'HEC Paris",
+    url: defaultUrl,
+    siteName: "Double Jeu",
+    images: [
+      {
+        url: `${defaultUrl}/images/Affiches/visite.png`,
+        width: 1200,
+        height: 630,
+        alt: "Double Jeu - La troupe de théâtre d'HEC Paris",
+      },
+    ],
+    locale: "fr_FR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Double Jeu",
+    description: "La troupe de théâtre d'HEC Paris",
+    images: [`${defaultUrl}/images/Affiches/visite.png`],
+  },
 };
 
 const geistSans = Geist({
