@@ -20,7 +20,8 @@ export default function HeroSectionWithoutShow() {
                 className="w-full h-auto block"
                 src="/video/annonce-VVD.mp4"
                 controls
-                poster="/path/to/your/poster-image.jpg" // Optional: Add a poster image
+                autoPlay
+                muted
               >
                 Your browser does not support the video tag.
               </video>

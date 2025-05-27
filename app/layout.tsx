@@ -5,7 +5,6 @@ import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import { ThemeProvider } from "next-themes";
 import { Geist, Oswald } from "next/font/google";
 import Link from "next/link";
-import Script from "next/script";
 import { Toaster } from "sonner";
 import "./globals.css";
 
@@ -62,12 +61,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={geistSans.className} suppressHydrationWarning>
-      <head>
-        <Script
-          src="https://sdk.hellouniweb.com/base/main.js"
-          data-account="lZOzpEvf"
-        />
-      </head>
       <body className="bg-background text-foreground" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
