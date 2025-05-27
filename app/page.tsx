@@ -1,15 +1,15 @@
 import AboutSection from "@/components/landing/AboutSection";
-import CurrentShowSection from "@/components/landing/CurrentShowSection";
-import HeroSection from "@/components/landing/HeroSection";
+import HeroSectionWithoutShow from "@/components/landing/HeroSectionWithoutShow";
 import PreviousShows from "@/components/landing/PreviousShows";
 import TestimonialSection from "@/components/landing/TestimonialSection";
 
 export default function Home() {
   return (
     <div className="flex flex-col space-y-0">
-      <HeroSection />
+      {/* <HeroSectionWithShow /> */}
+      <HeroSectionWithoutShow />
       <AboutSection />
-      <CurrentShowSection />
+      {/* <CurrentShowSection /> */}
       <PreviousShows />
       <TestimonialSection />
     </div>

@@ -2,7 +2,7 @@ import { ArrowUpRight, Calendar, MapPin, Ticket } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function HeroSection() {
+export default function HeroSectionWithShow() {
   return (
     <section className="py-12 md:py-16 bg-background">
       <div className="container mx-auto px-4">
