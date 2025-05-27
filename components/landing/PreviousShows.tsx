@@ -3,6 +3,17 @@ import ShowCard from "../cards/ShowCard";
 const shows = [
   {
     index: 0,
+    title: "La visite de la vieille dame",
+    year: "Avril 2025",
+    coverImage: "/images/Affiches/visite.png",
+    youtubeUrl: "https://www.youtube.com/watch?v=eigifAXjyvI",
+    description:
+      "L'argent peut-il tout acheter ? Seriez-vous prêt à tuer pour 1 milliard ?",
+    writer: "Friedrich Dürrenmatt",
+    directors: ["Maxime Taffanel"],
+  },
+  {
+    index: 1,
     title: "Hortense a dit j'mens fous!",
     year: "Décembre 2024",
     coverImage: "/images/Affiches/Hortense.png",
@@ -12,7 +23,7 @@ const shows = [
     directors: ["Maxime Taffanel"],
   },
   {
-    index: 1,
+    index: 2,
     title: "Le songe d'une nuit d'été",
     year: "Avril 2024",
     coverImage: "/images/Affiches/Songe2.png",
@@ -22,7 +33,7 @@ const shows = [
     directors: ["Maxime Taffanel"],
   },
   {
-    index: 2,
+    index: 3,
     title: "Les jumeaux vénitiens",
     year: "Décembre 2023",
     coverImage: "/images/Affiches/Jumeaux.jpg",
@@ -32,7 +43,7 @@ const shows = [
     directors: ["Maxime Taffanel"],
   },
   {
-    index: 3,
+    index: 4,
     title: "Un fil à la patte",
     year: "Avril 2023",
     coverImage: "/images/Affiches/fil.jpg",
@@ -42,7 +53,7 @@ const shows = [
     directors: ["Maxime Taffanel"],
   },
   {
-    index: 4,
+    index: 5,
     title: "Le médecin malgré lui",
     year: "Décembre 2023",
     coverImage: "/images/Affiches/medecin.png",
@@ -52,7 +63,7 @@ const shows = [
     directors: ["Maxime Taffanel"],
   },
   {
-    index: 5,
+    index: 6,
     title: "Les Éstivants",
     year: "Avril 2022",
     coverImage: "/images/Affiches/estivants.png",
