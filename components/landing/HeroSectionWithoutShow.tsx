@@ -14,11 +14,11 @@ export default function HeroSectionWithoutShow() {
 
           {/* Right side - Video Placeholder */}
           <div className="w-full md:w-1/2 flex justify-center">
-            <div className="relative w-1/2 max-w-md shadow-2xl rounded-lg overflow-hidden bg-black">
+            <div className="relative max-w-md shadow-2xl rounded-lg overflow-hidden bg-black">
               {/* Video Player */}
               <video
                 className="w-full h-auto block"
-                src="/video/annonce-VVD.mp4"
+                src="/video/prez.mp4"
                 controls
                 autoPlay
                 muted
